@@ -20,5 +20,14 @@
       <description>D3</description>
     </item>
     
+    <item>
+      <title>Smart Mirror</title>
+      <link>https://BinSin.github.io/2018/07/smart-mirror/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/2018/07/smart-mirror/</guid>
+      <description> HelloMirror </description>
+    </item>
+    
   </channel>
 </rss>
