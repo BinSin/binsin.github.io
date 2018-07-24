@@ -74,6 +74,12 @@
   </url>
   
   <url>
+    <loc>https://BinSin.github.io/tags/computer-vison/</loc>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/categories/computer-vison/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -81,6 +87,12 @@
   
   <url>
     <loc>https://BinSin.github.io/tags/cover-image/</loc>
+    <lastmod>2015-05-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/tags/cs231n/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

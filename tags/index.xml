@@ -12,11 +12,29 @@
     
     
     <item>
-      <title>Cover Image</title>
-      <link>https://BinSin.github.io/tags/cover-image/</link>
+      <title>Computer Vison</title>
+      <link>https://BinSin.github.io/tags/computer-vison/</link>
       <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
+      <guid>https://BinSin.github.io/tags/computer-vison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cover Image</title>
+      <link>https://BinSin.github.io/tags/cover-image/</link>
+      <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
+      
       <guid>https://BinSin.github.io/tags/cover-image/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cs231n</title>
+      <link>https://BinSin.github.io/tags/cs231n/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/tags/cs231n/</guid>
       <description></description>
     </item>
     
