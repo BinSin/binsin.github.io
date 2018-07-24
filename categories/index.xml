@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on BINSIN&#39;s blog</title>
+    <title>Categories on BinSin&#39;s blog</title>
     <link>https://BinSin.github.io/categories/</link>
-    <description>Recent content in Categories on BINSIN&#39;s blog</description>
+    <description>Recent content in Categories on BinSin&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -25,33 +25,6 @@
       <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/categories/cs231n/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Features</title>
-      <link>https://BinSin.github.io/categories/features/</link>
-      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://BinSin.github.io/categories/features/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Releases</title>
-      <link>https://BinSin.github.io/categories/releases/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://BinSin.github.io/categories/releases/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tranquilpeak</title>
-      <link>https://BinSin.github.io/categories/tranquilpeak/</link>
-      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://BinSin.github.io/categories/tranquilpeak/</guid>
       <description></description>
     </item>
     
