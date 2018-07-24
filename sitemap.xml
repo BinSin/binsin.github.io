@@ -29,13 +29,13 @@
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/categories/binsin/</loc>
+    <loc>https://BinSin.github.io/tags/binsin/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/tags/binsin/</loc>
+    <loc>https://BinSin.github.io/categories/binsin/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -47,19 +47,13 @@
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/categories/computer-vison/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://BinSin.github.io/tags/computer-vison/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/categories/cs231n/</loc>
+    <loc>https://BinSin.github.io/categories/computer-vison/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -71,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/categories/d3/</loc>
+    <loc>https://BinSin.github.io/categories/cs231n/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -83,19 +77,25 @@
   </url>
   
   <url>
+    <loc>https://BinSin.github.io/categories/d3/</loc>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/tags/data-driven-documents/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/categories/javascript/</loc>
+    <loc>https://BinSin.github.io/tags/javascript/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://BinSin.github.io/tags/javascript/</loc>
+    <loc>https://BinSin.github.io/categories/javascript/</loc>
     <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
