@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag1 on BINSIN&#39;s blog</title>
+    <link>https://BinSin.github.io/tags/tag1/</link>
+    <description>Recent content in Tag1 on BINSIN&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Jul 2018 11:20:41 +0900</lastBuildDate>
+    
+	<atom:link href="https://BinSin.github.io/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://BinSin.github.io/2018/07/my-first-post/</link>
+      <pubDate>Tue, 24 Jul 2018 11:20:41 +0900</pubDate>
+      
+      <guid>https://BinSin.github.io/2018/07/my-first-post/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

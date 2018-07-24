@@ -11,6 +11,33 @@
     
     
     <item>
+      <title>Category</title>
+      <link>https://BinSin.github.io/categories/category/</link>
+      <pubDate>Tue, 24 Jul 2018 11:20:41 +0900</pubDate>
+      
+      <guid>https://BinSin.github.io/categories/category/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Vison</title>
+      <link>https://BinSin.github.io/categories/computer-vison/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/categories/computer-vison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cs231n</title>
+      <link>https://BinSin.github.io/categories/cs231n/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/categories/cs231n/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Features</title>
       <link>https://BinSin.github.io/categories/features/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
@@ -25,6 +52,15 @@
       <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/categories/releases/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Subcategory</title>
+      <link>https://BinSin.github.io/categories/subcategory/</link>
+      <pubDate>Tue, 24 Jul 2018 11:20:41 +0900</pubDate>
+      
+      <guid>https://BinSin.github.io/categories/subcategory/</guid>
       <description></description>
     </item>
     

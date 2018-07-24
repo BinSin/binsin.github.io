@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://BinSin.github.io/2018/07/my-first-post/</loc>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/2018/07/cs231n/</loc>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/2018/02/image-gallery-showcase/</loc>
     <lastmod>2018-02-18T00:00:00+00:00</lastmod>
   </url>
@@ -59,7 +69,7 @@
   
   <url>
     <loc>https://BinSin.github.io/</loc>
-    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -69,8 +79,26 @@
   </url>
   
   <url>
+    <loc>https://BinSin.github.io/categories/category/</loc>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/categories/computer-vison/</loc>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/tags/cover-image/</loc>
-    <lastmod>2015-05-13T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/categories/cs231n/</loc>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +176,7 @@
   
   <url>
     <loc>https://BinSin.github.io/post/</loc>
-    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -171,14 +199,32 @@
   </url>
   
   <url>
+    <loc>https://BinSin.github.io/categories/subcategory/</loc>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/tags/tag-plugins/</loc>
     <lastmod>2014-10-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://BinSin.github.io/tags/tag1/</loc>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/tags/tag2/</loc>
+    <lastmod>2018-07-24T11:20:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://BinSin.github.io/tags/</loc>
-    <lastmod>2015-05-13T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
