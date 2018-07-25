@@ -35,8 +35,10 @@
       <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/2018/07/d3/</guid>
-      <description>Data-Driven Documents D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
-D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &amp;lt;script src=&amp;quot;https://d3js.org/d3.v5.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections  d3.select() : 첫번째로 매칭되는 요소만 선택 d3.selectAll() : 매칭되는 모든 요소 선택  이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.</description>
+      <description>&lt;h1 id=&#34;data-driven-documents&#34;&gt;Data-Driven Documents&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ko.wikipedia.org/wiki/D3.js&#34;&gt;D3.js&lt;/a&gt;(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
+&lt;/p&gt;</description>
     </item>
     
     <item>
