@@ -6,10 +6,19 @@
     <description>Recent content on BinSin&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://BinSin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Welcome to BinSin&#39;s Blog</title>
+      <link>https://BinSin.github.io/2018/07/welcome-to-binsins-blog/</link>
+      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/2018/07/welcome-to-binsins-blog/</guid>
+      <description> Who Is BinSin </description>
+    </item>
     
     <item>
       <title>CS231n</title>
@@ -39,20 +48,11 @@
     </item>
     
     <item>
-      <title>Hello, I&#39;m BinSin</title>
-      <link>https://BinSin.github.io/2018/07/hello-im-binsin/</link>
-      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://BinSin.github.io/2018/07/hello-im-binsin/</guid>
-      <description> Who Is BinSin </description>
-    </item>
-    
-    <item>
-      <title>Welcome to BinSin&#39;s Blog</title>
-      <link>https://BinSin.github.io/2018/07/welcome-to-binsins-blog/</link>
+      <title>Start BinSin&#39;s Blog</title>
+      <link>https://BinSin.github.io/2018/07/start-binsins-blog/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://BinSin.github.io/2018/07/welcome-to-binsins-blog/</guid>
+      <guid>https://BinSin.github.io/2018/07/start-binsins-blog/</guid>
       <description> 빈신 블로그 시작~ </description>
     </item>
     
