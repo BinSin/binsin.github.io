@@ -6,7 +6,7 @@
     <description>Recent content in Tags on BinSin&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://BinSin.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Aws</title>
       <link>https://BinSin.github.io/tags/aws/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/aws/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>Binsin</title>
       <link>https://BinSin.github.io/tags/binsin/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/binsin/</guid>
       <description></description>
@@ -77,7 +77,7 @@
     <item>
       <title>Magicmirror2</title>
       <link>https://BinSin.github.io/tags/magicmirror2/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/magicmirror2/</guid>
       <description></description>
@@ -86,7 +86,7 @@
     <item>
       <title>Nodejs</title>
       <link>https://BinSin.github.io/tags/nodejs/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/nodejs/</guid>
       <description></description>
@@ -95,7 +95,7 @@
     <item>
       <title>Raspbian</title>
       <link>https://BinSin.github.io/tags/raspbian/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/raspbian/</guid>
       <description></description>
@@ -104,7 +104,7 @@
     <item>
       <title>Reo</title>
       <link>https://BinSin.github.io/tags/reo/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/reo/</guid>
       <description></description>
@@ -113,9 +113,18 @@
     <item>
       <title>Smartmirror</title>
       <link>https://BinSin.github.io/tags/smartmirror/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/tags/smartmirror/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Yongmin Bin</title>
+      <link>https://BinSin.github.io/tags/yongmin-bin/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/tags/yongmin-bin/</guid>
       <description></description>
     </item>
     

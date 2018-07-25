@@ -6,7 +6,7 @@
     <description>Recent content in Categories on BinSin&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://BinSin.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Binsin</title>
       <link>https://BinSin.github.io/categories/binsin/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/categories/binsin/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>Capstonedesign</title>
       <link>https://BinSin.github.io/categories/capstonedesign/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/categories/capstonedesign/</guid>
       <description></description>
@@ -68,9 +68,18 @@
     <item>
       <title>Smartmirror</title>
       <link>https://BinSin.github.io/categories/smartmirror/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://BinSin.github.io/categories/smartmirror/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Yongmin Bin</title>
+      <link>https://BinSin.github.io/categories/yongmin-bin/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://BinSin.github.io/categories/yongmin-bin/</guid>
       <description></description>
     </item>
     

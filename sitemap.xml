@@ -14,12 +14,17 @@
   
   <url>
     <loc>https://BinSin.github.io/2018/07/smart-mirror/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/2018/07/who-is-binsin/</loc>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/2018/07/welcome-to-binsins-blog/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,7 +34,7 @@
   
   <url>
     <loc>https://BinSin.github.io/tags/aws/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -41,25 +46,25 @@
   
   <url>
     <loc>https://BinSin.github.io/tags/binsin/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/categories/binsin/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/categories/capstonedesign/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/categories/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,13 +124,13 @@
   
   <url>
     <loc>https://BinSin.github.io/tags/magicmirror2/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/tags/nodejs/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -137,31 +142,43 @@
   
   <url>
     <loc>https://BinSin.github.io/tags/raspbian/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/tags/reo/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/tags/smartmirror/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/categories/smartmirror/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://BinSin.github.io/tags/</loc>
-    <lastmod>2018-07-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/tags/yongmin-bin/</loc>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://BinSin.github.io/categories/yongmin-bin/</loc>
+    <lastmod>2018-07-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
