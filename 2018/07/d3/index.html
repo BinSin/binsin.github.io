@@ -29,11 +29,9 @@
 
     
     <meta name="description" content="Data-Driven Documents D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
-D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections d3.select : selects only the first matching element d3.selectAll : selects all matching element
-이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
+D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections  d3.select() : 첫번째로 매칭되는 요소만 선택 d3.selectAll() : 매칭되는 모든 요소 선택  이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
     <meta property="og:description" content="Data-Driven Documents D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
-D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections d3.select : selects only the first matching element d3.selectAll : selects all matching element
-이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
+D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections  d3.select() : 첫번째로 매칭되는 요소만 선택 d3.selectAll() : 매칭되는 모든 요소 선택  이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="D3">
     <meta property="og:url" content="/2018/07/d3/">
@@ -41,8 +39,7 @@ D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 �
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="BinSin&#39;s blog">
     <meta name="twitter:description" content="Data-Driven Documents D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
-D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections d3.select : selects only the first matching element d3.selectAll : selects all matching element
-이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
+D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections  d3.select() : 첫번째로 매칭되는 요소만 선택 d3.selectAll() : 매칭되는 모든 요소 선택  이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.">
     
     
 
@@ -285,8 +282,10 @@ D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 �
 
 <h3 id="d3-selections">D3 Selections</h3>
 
-<p>d3.select : selects only the first matching element
-d3.selectAll : selects all matching element</p>
+<ul>
+<li>d3.select() : 첫번째로 매칭되는 요소만 선택</li>
+<li>d3.selectAll() : 매칭되는 모든 요소 선택</li>
+</ul>
 
 <p>이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.</p>
 
@@ -301,8 +300,8 @@ d3.selectAll : selects all matching element</p>
 d3.selectAll(&quot;'p&quot;)[0]
 </code></pre>
 
-<p>를 해주면
-d3.select 는 [p] 만 리턴하고
+<p>를 해주면 </br>
+d3.select 는 [p] 만 리턴하고 &lt;/br
 d3.selectAll 은 [p, p.fancy-paragraph, p.fancy-paragraph] 모두를 리턴한다.</p>
 
 <h3 id="d3-arrays">D3 Arrays</h3>
@@ -330,7 +329,7 @@ array.join(); // 모든 요소를 string으로 리턴
 array.slice(1, 4); // array의 1~3 까지의 요소를 리턴(array 변화 x)
 array.slice(1); // 1부터 모든 요소를 리턴
 array.indexOf(5) // 첫번째로 요소가 5인 인텍스 위치 리턴 -&gt; 1
-array.lastIndexOf(5); // 마지막으로 요소가 5인 인텍스 위치 리턴 -&gt; 6
+array.lastIndexOf(5); // 마지막으로 요소가 5인 인텍스 위치 리턴 -&gt;
 </code></pre></li>
 
 <li><p>Basic D3 Array Utilities</p>
@@ -341,7 +340,7 @@ d3.max(array); // 최대값 -&gt; 10
 d3.extent(array); // 최소값, 최대값 배열로 리턴
 d3.sum(array); // 모든 요소의 합
 d3.mean(array); // 평균값 -&gt; d3.sum(array)/array.length
-d3.median(array); // 중간값 -&gt;
+d3.median(array); // 중간값 -&gt; 5
 </code></pre></li>
 </ul>
 
@@ -643,8 +642,7 @@ d3.median(array); // 중간값 -&gt;
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather">Data-Driven Documents D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고 인터렉티브한 정보시각화를 구현하기 위한 자바스크립트 라이브러리이다.
-D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections d3.select : selects only the first matching element d3.selectAll : selects all matching element
-이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.</div>
+D3 Start  D3홈페이지 에서 라이브러리를 다운 직접 스크립트 요소에 src 속성을 추가 html &lt;script src=&quot;https://d3js.org/d3.v5.min.js&quot;&gt;&lt;/script&gt;   Basic D3 Visualization Pattern  select() or selectAll() data() enter() append()  D3 Selections  d3.select() : 첫번째로 매칭되는 요소만 선택 d3.selectAll() : 매칭되는 모든 요소 선택  이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
