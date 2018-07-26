@@ -291,6 +291,8 @@ D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고
 
 <h3 id="d3-selections">D3 Selections</h3>
 
+<p>D3 Selections are JavaScript Arrays of Arrays</p>
+
 <ul>
 <li>d3.select() : 첫번째로 매칭되는 요소만 선택</li>
 <li>d3.selectAll() : 매칭되는 모든 요소 선택</li>
@@ -298,9 +300,32 @@ D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고
 
 <p>이들은 2차 배열 형태로 리턴되는데 select 는 처음에 만난 요소만 리턴해주고 selectAll 은 모든 요소를 리턴해준다.</p>
 
-<pre><code class="language-html">&lt;p&gt;Hello World&lt;/p&gt;
-&lt;p class=&quot;fancy-paragraph&quot;&gt;Evening Gown Required&lt;/p&gt;
-&lt;p class=&quot;fancy-paragraph&quot; style=&quot;color:red;&quot;&gt;Tuxedo Required&lt;/p&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;https://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello World&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;One&lt;/li&gt;
+      &lt;li&gt;Two&lt;/li&gt;
+      &lt;li&gt;Three&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p class=&quot;fancy-paragraph&quot;&gt;Evening Gown Required&lt;/p&gt;
+    &lt;p class=&quot;fancy-paragraph&quot; style=&quot;color:red;&quot;&gt;Tuxedo Required&lt;/p&gt;
+    &lt;span style=&quot;color:red;&quot;&gt;Bridge&lt;/span&gt;
+    &lt;span id=&quot;wide-span&quot;&gt;Brooklyn Brigde&lt;/span&gt;
+    &lt;div class=&quot;outer-div&quot;&gt;
+      outer
+      &lt;div class=&quot;inner-div&quot;)&gt;
+        inner
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
 <p>여기서</p>
@@ -351,6 +376,71 @@ d3.sum(array); // 모든 요소의 합
 d3.mean(array); // 평균값 -&gt; d3.sum(array)/array.length
 d3.median(array); // 중간값 -&gt; 5
 </code></pre></li>
+</ul>
+
+<h2 id="adding-a-dom-element">Adding a DOM Element</h2>
+
+<h3 id="d3-append-operator">D3 Append Operator</h3>
+
+<ul>
+<li><p>d3.select().append()</p>
+
+<pre><code class="language-JavaScript">d3.selectAll(&quot;li&quot;).append(&quot;hr&quot;); // li 태그 모두에 hr 태그(한 줄)가 추가된다.
+</code></pre></li>
+
+<li><p>d3.select().insert()</p>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;hr&quot;); // body 태그의 마지막에 줄이 추가된다.
+d3.select(&quot;body&quot;).insert(&quot;hr&quot;, &quot;span&quot;); // body 태그의 span 태그 위에 줄이 추가된다.
+d3.select(&quot;body&quot;).insert(&quot;hr&quot;, &quot;:first-child&quot;); // 첫번째 자식은 p 태그 이므로 그 위에 줄이 추가된다.
+d3.select(&quot;.outer-div&quot;).insert(&quot;hr&quot;, &quot;.inner-div&quot;); // inner 위에 줄이 추가된다.
+d3.select(&quot;#narrow-span&quot;).insert(&quot;hr&quot;); // #narrow_span 태그가 없으므로 추가되지 않는다. -&gt; null
+</code></pre></li>
+</ul>
+
+<h3 id="d3-remove-operator">D3 Remove Operator</h3>
+
+<ul>
+<li>d3.remove()
+<code>JavaScript
+d3.select(&quot;body&quot;).remove(); // body 태그 제거
+d3.select(&quot;li&quot;).remove(); // One 제거
+d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
+</code></li>
+</ul>
+
+<h2 id="fundamentals-of-svg">Fundamentals of SVG</h2>
+
+<ul>
+<li><p><a href="https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EB%B8%94_%EB%B2%A1%ED%84%B0_%EA%B7%B8%EB%9E%98%ED%94%BD%EC%8A%A4">Scalable Vector Grraphics (SVG)</a>
+2차원 벡터 그래픽을 표현하기 위한 XML 기반의 파일 형식으로, 1999년 W3C(World Wide Web Consortium)의 주도하에 개발된 오픈 표준의 벡터 그래픽 파일 형식이다. 벡터 그래픽은 픽셀 밖으로 생성되지 않아서 이미지 품질을 잃지 않고 크기를 늘리거나 줄일 수 있다.</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
+&lt;/svg&gt;
+</code></pre></li>
+
+<li><p>HTML5 Canvas
+다용도의 JavaScript API 로 프로그래밍 방식의 그리기 작업을 코딩 할 수 있다. Canvas 는 그 자체로, 내부에 그려질 수 있는 Canvas context 객체를 정의할 수 있다.</p>
+
+<pre><code class="language-html">&lt;canvas id=&quot;tutorial&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;
+</code></pre></li>
+
+<li><p>SVG vs HTML5 Canvas
+SVG 는 각각의 그래픽 요소들이 DOM 객체를 만드는 Vector 기반 그래픽스이고 HTML5 는 자바스크립트 API 기반 이미지를 만드는 Raster 기반 그래픽스이다.</p>
+
+<ul>
+<li>공통점</li>
+<li>그래픽 그리기를 허용</li>
+<li>2D로 그림을 그릴 수 있음</li>
+<li>차이점</li>
+<li>Canvas 는 복잡한 이미지를 허용한다.</li>
+<li>Canvas 는 지속적인 성능을 제공한다.</li>
+<li>Canvas 는 무언가 변경되면 모두 다시 그린다.</li>
+<li>SVG 는 이벤트 첨부를 허용한다.</li>
+<li>SVG 는 animation API 를 허용한다.</li>
+<li>DOM 요소가 증가하면 SVG 의 속도가 느려진다.</li>
+</ul></li>
 </ul>
               
             </div>
