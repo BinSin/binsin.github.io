@@ -295,11 +295,9 @@ D3.js(D3 또는 Data-Driven Documents)는 웹브라우저 상에서 동적이고
 <li>append()</li>
 </ul>
 
-<p><br /></p>
-
 <h3 id="d3-selections">D3 Selections</h3>
 
-<p>D3 Selections are JavaScript Arrays of Arrays</p>
+<p>D3 Selections 는 자바스크립트의 배열이다.</p>
 
 <ul>
 <li>d3.select() : 첫번째로 매칭되는 요소만 선택</li>
@@ -343,14 +341,12 @@ d3.selectAll(&quot;'p&quot;)[0]
 </code></pre>
 
 <p>를 해주면 </br>
-d3.select 는 [p] 만 리턴하고 &lt;/br
+d3.select 는 [p] 만 리턴하고 </br>
 d3.selectAll 은 [p, p.fancy-paragraph, p.fancy-paragraph] 모두를 리턴한다.</p>
-
-<p><br /></p>
 
 <h3 id="d3-arrays">D3 Arrays</h3>
 
-<p>D3&rsquo;s canonical representation if Data is Arrays</p>
+<p>데이터가 배열일 때의 D3의 정규 표현</p>
 
 <ul>
 <li><p>JavaScript Array Mutator Methods</p>
@@ -395,8 +391,6 @@ d3.median(array); // 중간값 -&gt; 5
 
 <p>DOM Element 추가하기</p>
 
-<p><br /></p>
-
 <h3 id="d3-append-operator">D3 Append Operator</h3>
 
 <ul>
@@ -414,8 +408,6 @@ d3.select(&quot;.outer-div&quot;).insert(&quot;hr&quot;, &quot;.inner-div&quot;)
 d3.select(&quot;#narrow-span&quot;).insert(&quot;hr&quot;); // #narrow_span 태그가 없으므로 추가되지 않는다. -&gt; null
 </code></pre></li>
 </ul>
-
-<p><br /></p>
 
 <h3 id="d3-remove-operator">D3 Remove Operator</h3>
 
@@ -435,13 +427,9 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <p>SVG의 기초</p>
 
-<p><br /></p>
-
 <h3 id="scalable-vector-grraphics">Scalable Vector Grraphics</h3>
 
 <p><a href="https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EB%B8%94_%EB%B2%A1%ED%84%B0_%EA%B7%B8%EB%9E%98%ED">SVG</a> 는2차원 벡터 그래픽을 표현하기 위한 XML 기반의 파일 형식으로, 1999년 W3C(World Wide Web Consortium)의 주도하에 개발된 오픈 표준의 벡터 그래픽 파일 형식이다. 벡터 그래픽은 픽셀 밖으로 생성되지 않아서 이미지 품질을 잃지 않고 크기를 늘리거나 줄일 수 있다.</p>
-
-<p><br /></p>
 
 <h3 id="html5-canvas">HTML5 Canvas</h3>
 
@@ -449,8 +437,6 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <pre><code class="language-html">&lt;canvas id=&quot;tutorial&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;
 </code></pre>
-
-<p><br /></p>
 
 <h3 id="svg-vs-html5-canvas">SVG vs HTML5 Canvas</h3>
 
@@ -475,13 +461,9 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 </ul></li>
 </ul>
 
-<p><br /></p>
-
 <h3 id="the-structure-of-svg-within-an-html-document">The Structure of SVG Within an HTML Document</h3>
 
 <p>svg 태그를 사용하며 사각형, 원, 타원, 선 등을 그릴 수 있다.</p>
-
-<p><br /></p>
 
 <h3 id="the-syntax-of-basic-svg-objects">The Syntax of Basic SVG Objects</h3>
 
@@ -550,15 +532,11 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <p>여기서 svg 가 tag, width 와 height 가 attribute, 50 과 50 이 value 다.</p>
 
-<p><br /></p>
-
 <h3 id="d3-append-revisited">D3 Append Revisited</h3>
 
 <ul>
 <li>d3.selection.append(name)</li>
 </ul>
-
-<p><br /></p>
 
 <h3 id="seeting-selection-attributes">Seeting Selection Attributes</h3>
 
@@ -571,19 +549,16 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <p>이렇게 모형을 추가할 수 있다.</p>
 
-<p><br /></p>
-
 <h3 id="d3-style-operator">D3 Style Operator</h3>
 
 <ul>
 <li>selection.style(name [, value [, priority]])
 <code>html
-d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;).append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).style(&quot;fill&quot;,&quot;blue&quot;);
+d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;)
+.append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).style(&quot;fill&quot;,&quot;blue&quot;);
 </code>
 외부 스타일 시트와 일관되게 동작하기 때문에 style 연산자를 사용하는 것더 좋다.</li>
 </ul>
-
-<p><br /></p>
 
 <h3 id="d3-legibility-through-js-variables">D3 Legibility through JS variables</h3>
 
@@ -606,6 +581,45 @@ var circleSelection = svgSelection.append(&quot;circle&quot;)
 <br /></p>
 
 <h2 id="d3-data-operator">D3 Data Operator</h2>
+
+<ul>
+<li>d3.selection.data([values[, key]])
+<code>html
+d3.select(&quot;body&quot;).insert(&quot;p&quot;);
+d3.select(&quot;p&quot;).data([1]); // p의 데이터에  [1] 을 넣는다.
+d3.select(&quot;p&quot;).data([[1, 2, 3]]); // [1, 2, 3] 을 넣는다.
+d3.select(&quot;p&quot;).data([ function returnThree() { return 3; } ] ); // 함수도 넣을 수 있다.
+d3.select(&quot;p&quot;).data([ superwoman = { &quot;gender&quot;:&quot;female&quot;, &quot;transportation&quot;:&quot;flying&quot; }]); // 객체도 가능
+d3.select(&quot;p&quot;)[0][0].__data__  // 여기서 data 를 확인할 수 있다.
+</code></li>
+</ul>
+
+<h3 id="d3-data-operator-with-many-data-values">D3 Data Operator with many Data Values</h3>
+
+<p>selectAll 을 사용해서 여러 element 에 데이터 값을 넣을 수 있다.</p>
+
+<pre><code class="language-html">d3.select(&quot;body&quot;).insert(&quot;p&quot;);
+d3.select(&quot;body&quot;).insert(&quot;p&quot;);
+d3.selectAll(&quot;p&quot;).data([[1, 2, 3], [4, 5, 6]]);
+</code></pre>
+
+<p>첫번째 p 에는 [1, 2, 3] 이, 추번째 p 에는 [4, 5, 6] 이 들어간다.</p>
+
+<p>만약</p>
+
+<pre><code class="language-html">d3.selectAll(&quot;p&quot;).data([ function() {return 3;}]);
+</code></pre>
+
+<p>이렇게 하면 첫번째 p 에만 data 가 들어간다.</p>
+
+<p>그러므로</p>
+
+<pre><code class="language-html">d3.selectAll(&quot;p&quot;).data([
+    superwoman = { &quot;gender&quot;:&quot;female&quot;, &quot;transportation&quot;:&quot;flying&quot; },
+    superman = { &quot;gender&quot;:&quot;male&quot; , &quot;transportation&quot;:&quot;flying&quot; } ]);
+</code></pre>
+
+<p>이런식으로 코딩하자~!</p>
               
             </div>
           </div>
