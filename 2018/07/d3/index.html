@@ -544,7 +544,7 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 <li>d3.selection.attr(name[, value]).attr(name[, value])</li>
 </ul>
 
-<pre><code class="language-html">d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;).append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).attr(&quot;fill&quot;,&quot;blue&quot;);
+<pre><code class="language-JavaScript">d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;).append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).attr(&quot;fill&quot;,&quot;blue&quot;);
 </code></pre>
 
 <p>이렇게 모형을 추가할 수 있다.</p>
@@ -553,7 +553,7 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <ul>
 <li>selection.style(name [, value [, priority]])
-<code>html
+<code>JavaScript
 d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;)
 .append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).style(&quot;fill&quot;,&quot;blue&quot;);
 </code>
@@ -562,7 +562,7 @@ d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;
 
 <h3 id="d3-legibility-through-js-variables">D3 Legibility through JS variables</h3>
 
-<pre><code class="language-html">var divSelection = d3.select(&quot;.svg_by_d3&quot;);
+<pre><code class="language-JavaScript">var divSelection = d3.select(&quot;.svg_by_d3&quot;);
 
 var svgSelection = divSelection.append(&quot;svg&quot;)
     .attr(&quot;width&quot;,&quot;50&quot;)
@@ -584,7 +584,7 @@ var circleSelection = svgSelection.append(&quot;circle&quot;)
 
 <ul>
 <li>d3.selection.data([values[, key]])
-<code>html
+<code>JavaScript
 d3.select(&quot;body&quot;).insert(&quot;p&quot;);
 d3.select(&quot;p&quot;).data([1]); // p의 데이터에  [1] 을 넣는다.
 d3.select(&quot;p&quot;).data([[1, 2, 3]]); // [1, 2, 3] 을 넣는다.
@@ -598,7 +598,7 @@ d3.select(&quot;p&quot;)[0][0].__data__  // 여기서 data 를 확인할 수 있
 
 <p>selectAll 을 사용해서 여러 element 에 데이터 값을 넣을 수 있다.</p>
 
-<pre><code class="language-html">d3.select(&quot;body&quot;).insert(&quot;p&quot;);
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;p&quot;);
 d3.select(&quot;body&quot;).insert(&quot;p&quot;);
 d3.selectAll(&quot;p&quot;).data([[1, 2, 3], [4, 5, 6]]);
 </code></pre>
