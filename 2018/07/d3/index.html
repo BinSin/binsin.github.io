@@ -411,23 +411,20 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <h2 id="fundamentals-of-svg">Fundamentals of SVG</h2>
 
-<ul>
-<li><p><a href="https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EB%B8%94_%EB%B2%A1%ED%84%B0_%EA%B7%B8%EB%9E%98%ED%94%BD%EC%8A%A4">Scalable Vector Grraphics (SVG)</a>
-2차원 벡터 그래픽을 표현하기 위한 XML 기반의 파일 형식으로, 1999년 W3C(World Wide Web Consortium)의 주도하에 개발된 오픈 표준의 벡터 그래픽 파일 형식이다. 벡터 그래픽은 픽셀 밖으로 생성되지 않아서 이미지 품질을 잃지 않고 크기를 늘리거나 줄일 수 있다.</p>
+<h3 id="scalable-vector-grraphics">Scalable Vector Grraphics</h3>
 
-<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
-&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
-&lt;/svg&gt;
-</code></pre></li>
+<p><a href="https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EB%B8%94_%EB%B2%A1%ED%84%B0_%EA%B7%B8%EB%9E%98%ED">SVG</a> 는2차원 벡터 그래픽을 표현하기 위한 XML 기반의 파일 형식으로, 1999년 W3C(World Wide Web Consortium)의 주도하에 개발된 오픈 표준의 벡터 그래픽 파일 형식이다. 벡터 그래픽은 픽셀 밖으로 생성되지 않아서 이미지 품질을 잃지 않고 크기를 늘리거나 줄일 수 있다.</p>
 
-<li><p>HTML5 Canvas
-다용도의 JavaScript API 로 프로그래밍 방식의 그리기 작업을 코딩 할 수 있다. Canvas 는 그 자체로, 내부에 그려질 수 있는 Canvas context 객체를 정의할 수 있다.</p>
+<h3 id="html5-canvas">HTML5 Canvas</h3>
+
+<p>다용도의 JavaScript API 로 프로그래밍 방식의 그리기 작업을 코딩 할 수 있다. Canvas 는 그 자체로, 내부에 그려질 수 있는 Canvas context 객체를 정의할 수 있다.</p>
 
 <pre><code class="language-html">&lt;canvas id=&quot;tutorial&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p>SVG vs HTML5 Canvas
-SVG 는 각각의 그래픽 요소들이 DOM 객체를 만드는 Vector 기반 그래픽스이고 HTML5 는 자바스크립트 API 기반 이미지를 만드는 Raster 기반 그래픽스이다.</p>
+<h3 id="svg-vs-html5-canvas">SVG vs HTML5 Canvas</h3>
+
+<p>SVG 는 각각의 그래픽 요소들이 DOM 객체를 만드는 Vector 기반 그래픽스이고 HTML5 는 자바스크립트 API 기반 이미지를 만드는 Raster 기반 그래픽스이다.</p>
 
 <ul>
 <li>공통점
@@ -436,7 +433,8 @@ SVG 는 각각의 그래픽 요소들이 DOM 객체를 만드는 Vector 기반 �
 <li>그래픽 그리기를 허용</li>
 <li>2D로 그림을 그릴 수 있음</li>
 </ul></li>
-<li>차이점
+
+<li><p>차이점</p>
 
 <ul>
 <li>Canvas 는 복잡한 이미지를 허용한다.</li>
@@ -446,8 +444,66 @@ SVG 는 각각의 그래픽 요소들이 DOM 객체를 만드는 Vector 기반 �
 <li>SVG 는 animation API 를 허용한다.</li>
 <li>DOM 요소가 증가하면 SVG 의 속도가 느려진다.</li>
 </ul></li>
-</ul></li>
+
+<li><p>The Structure of SVG Within an HTML Document
+svg 태그를 사용하며 사각형, 원, 타원, 선 등을 그릴 수 있다.</p></li>
+
+<li><p>The Syntax of Basic SVG Objects
+A Rectangle</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>A Circle</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;circle cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>An Ellipse</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;ellipse cx=&quot;25&quot; cy=&quot;25&quot; rx=&quot;15&quot; ry=&quot;10&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>A Straight Line</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;line x1=&quot;5&quot; y1=&quot;5&quot; x2=&quot;40&quot; y2=&quot;40&quot; stroke=&quot;gray&quot; stroke-width=&quot;5&quot;  /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>A Polyline</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;polyline fill=&quot;none&quot; stroke=&quot;blue&quot; stroke-width=&quot;2&quot;
+points=&quot;05,30
+        15,30
+        15,20
+        25,20
+        25,10
+        35,10&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>A Polygon</p>
+
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+&lt;polygon fill=&quot;yellow&quot; stroke=&quot;blue&quot; stroke-width=&quot;2&quot;
+points=&quot;05,30
+        15,10
+        25,30&quot; /&gt;
+&lt;/svg&gt;
+</code></pre></li>
 </ul>
+
+<h2 id="adding-an-svg-element">Adding an SVG Element</h2>
+
+<h3 id="d3-append-revisited">D3 Append Revisited</h3>
               
             </div>
           </div>
