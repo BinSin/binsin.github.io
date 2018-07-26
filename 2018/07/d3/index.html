@@ -400,12 +400,12 @@ d3.median(array); // 중간값 -&gt; 5
 <h3 id="d3-append-operator">D3 Append Operator</h3>
 
 <ul>
-<li><p>d3.select().append()</p>
+<li><p>d3.select(name).append(name)</p>
 
 <pre><code class="language-JavaScript">d3.selectAll(&quot;li&quot;).append(&quot;hr&quot;); // li 태그 모두에 hr 태그(한 줄)가 추가된다.
 </code></pre></li>
 
-<li><p>d3.select().insert()</p>
+<li><p>d3.insert(name, (before))</p>
 
 <pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;hr&quot;); // body 태그의 마지막에 줄이 추가된다.
 d3.select(&quot;body&quot;).insert(&quot;hr&quot;, &quot;span&quot;); // body 태그의 span 태그 위에 줄이 추가된다.
@@ -543,9 +543,69 @@ d3.selectAll(&quot;li&quot;).remove(); // li 태그 전부 제거
 
 <p>SVG Element 추가하기</p>
 
+<pre><code class="language-html">&lt;svg width=&quot;50&quot; height=&quot;50&quot;&gt;
+...
+&lt;/svg&gt;
+</code></pre>
+
+<p>여기서 svg 가 tag, width 와 height 가 attribute, 50 과 50 이 value 다.</p>
+
 <p><br /></p>
 
 <h3 id="d3-append-revisited">D3 Append Revisited</h3>
+
+<ul>
+<li>d3.selection.append(name)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="seeting-selection-attributes">Seeting Selection Attributes</h3>
+
+<ul>
+<li>d3.selection.attr(name[, value]).attr(name[, value])</li>
+</ul>
+
+<pre><code class="language-html">d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;).append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).attr(&quot;fill&quot;,&quot;blue&quot;);
+</code></pre>
+
+<p>이렇게 모형을 추가할 수 있다.</p>
+
+<p><br /></p>
+
+<h3 id="d3-style-operator">D3 Style Operator</h3>
+
+<ul>
+<li>selection.style(name [, value [, priority]])
+<code>html
+d3.select(&quot;.svg_by_d3&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;50&quot;).attr(&quot;height&quot;,&quot;50&quot;).append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;25&quot;).attr(&quot;cy&quot;,&quot;25&quot;).attr(&quot;r&quot;,&quot;25&quot;).style(&quot;fill&quot;,&quot;blue&quot;);
+</code>
+외부 스타일 시트와 일관되게 동작하기 때문에 style 연산자를 사용하는 것더 좋다.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="d3-legibility-through-js-variables">D3 Legibility through JS variables</h3>
+
+<pre><code class="language-html">var divSelection = d3.select(&quot;.svg_by_d3&quot;);
+
+var svgSelection = divSelection.append(&quot;svg&quot;)
+    .attr(&quot;width&quot;,&quot;50&quot;)
+    .attr(&quot;height&quot;,&quot;50&quot;);
+
+var circleSelection = svgSelection.append(&quot;circle&quot;)
+    .attr(&quot;cx&quot;,&quot;25&quot;)
+    .attr(&quot;cy&quot;,&quot;25&quot;)
+    .attr(&quot;r&quot;,&quot;25&quot;)
+    .style(&quot;fill&quot;,&quot;blue&quot;);
+</code></pre>
+
+<p>가독성을 위해 이런 식으로 코딩을 하자!</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="d3-data-operator">D3 Data Operator</h2>
               
             </div>
           </div>
