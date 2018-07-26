@@ -583,16 +583,16 @@ var circleSelection = svgSelection.append(&quot;circle&quot;)
 <h2 id="d3-data-operator">D3 Data Operator</h2>
 
 <ul>
-<li>d3.selection.data([values[, key]])
-<code>JavaScript
-d3.select(&quot;body&quot;).insert(&quot;p&quot;);
+<li>d3.selection.data([values[, key]])</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;p&quot;);
 d3.select(&quot;p&quot;).data([1]); // p의 데이터에  [1] 을 넣는다.
 d3.select(&quot;p&quot;).data([[1, 2, 3]]); // [1, 2, 3] 을 넣는다.
 d3.select(&quot;p&quot;).data([ function returnThree() { return 3; } ] ); // 함수도 넣을 수 있다.
 d3.select(&quot;p&quot;).data([ superwoman = { &quot;gender&quot;:&quot;female&quot;, &quot;transportation&quot;:&quot;flying&quot; }]); // 객체도 가능
 d3.select(&quot;p&quot;)[0][0].__data__  // 여기서 data 를 확인할 수 있다.
-</code></li>
-</ul>
+</code></pre>
 
 <h3 id="d3-data-operator-with-many-data-values">D3 Data Operator with many Data Values</h3>
 
