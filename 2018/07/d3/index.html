@@ -733,6 +733,45 @@ manyPData.text(function() { return &quot;Anonymous Function&quot;; }); // 나중
 <li>i : the element index</li>
 <li>this : the DOM reference to the element in question</li>
 </ul>
+
+<pre><code class="language-JavaScript">var manyPData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1,2,3,4,5]).enter().append(&quot;p&quot;);
+function myFunction(d, i) {
+  return &quot;argument d: &quot; + d + &quot; ... argument i: &quot; + i;
+};
+manyPData.text(myFunction);
+</code></pre>
+
+<p>argument d: 1 &hellip; argument i: 0 <br />
+argument d: 2 &hellip; argument i: 1 <br />
+이런식으로 나온다</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="creating-svg-elements-from-data">Creating SVG Elements from Data</h2>
+
+<pre><code class="language-JavaScript">var myData = [1,2,3,4,5];
+var svgViewport = d3.select(&quot;body&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;400&quot;).attr(&quot;height&quot;,&quot;400&quot;);
+var circleSelection = svgViewport.selectAll(&quot;circle&quot;).data(myData);
+var circleElements = circleSelection.enter().append(&quot;circle&quot;);
+
+circleElements.attr(&quot;cx&quot;,function(d,i) { return d * 25; })
+    .attr(&quot;cy&quot;,function(d,i) { return d * 25; })
+    .attr(&quot;r&quot;,&quot;25&quot;);
+
+function greenRed(d,i) {
+    if (i % 2 === 0) { return &quot;green&quot;; }
+    else { return &quot;red&quot;; };
+}
+
+var circleStyle = circleElements.style(&quot;fill&quot;,greenRed);
+// 초록, 빨강 순으로 색깔이 칠해진다.
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="using-the-svg-coordinate-space">Using the SVG Coordinate Space</h2>
               
             </div>
           </div>
