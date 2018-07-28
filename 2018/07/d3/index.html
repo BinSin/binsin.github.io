@@ -701,6 +701,9 @@ functionName(args1, args2);
 }
 </code></pre>
 
+<p><br />
+<br /></p>
+
 <h2 id="using-data-bound-to-dom-elements">Using Data Bound to DOM Elements</h2>
 
 <pre><code class="language-JavaScript">var pData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1]).enter().append(&quot;p&quot;);
@@ -726,14 +729,9 @@ manyPData.text(function() { return &quot;Anonymous Function&quot;; }); // 나중
 <h3 id="variables-available-inside-d3-operators">Variables Available inside D3 Operators</h3>
 
 <ul>
-<li><p>d
-the __ data__ property</p></li>
-
-<li><p>i
-the element index</p></li>
-
-<li><p>this
-the DOM reference to the element in question</p></li>
+<li>d : the __ data__ property</li>
+<li>i : the element index</li>
+<li>this : the DOM reference to the element in question</li>
 </ul>
               
             </div>
