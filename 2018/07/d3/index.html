@@ -580,7 +580,17 @@ var circleSelection = svgSelection.append(&quot;circle&quot;)
 <p><br />
 <br /></p>
 
-<h2 id="d3-data-operator">D3 Data Operator</h2>
+<h2 id="basic-d3-visualization-pattern-1">Basic D3 Visualization Pattern</h2>
+
+<ul>
+<li>.select(&hellip;)</li>
+<li>.data(&hellip;)</li>
+<li>.enter()</li>
+<li>.append(&hellip;)
+많은 차트에서 이 함수들을 필수이다.</li>
+</ul>
+
+<h3 id="d3-data-operator">D3 Data Operator</h3>
 
 <ul>
 <li>d3.selection.data([values[, key]])</li>
@@ -607,19 +617,122 @@ d3.selectAll(&quot;p&quot;).data([[1, 2, 3], [4, 5, 6]]);
 
 <p>만약</p>
 
-<pre><code class="language-html">d3.selectAll(&quot;p&quot;).data([ function() {return 3;}]);
+<pre><code class="language-JavaScript">d3.selectAll(&quot;p&quot;).data([ function() {return 3;}]);
 </code></pre>
 
 <p>이렇게 하면 첫번째 p 에만 data 가 들어간다.</p>
 
 <p>그러므로</p>
 
-<pre><code class="language-html">d3.selectAll(&quot;p&quot;).data([
+<pre><code class="language-JavaScript">d3.selectAll(&quot;p&quot;).data([
     superwoman = { &quot;gender&quot;:&quot;female&quot;, &quot;transportation&quot;:&quot;flying&quot; },
     superman = { &quot;gender&quot;:&quot;male&quot; , &quot;transportation&quot;:&quot;flying&quot; } ]);
 </code></pre>
 
 <p>이런식으로 코딩하자~!</p>
+
+<h3 id="d3-update-selection">D3 Update Selection</h3>
+
+<ul>
+<li>d3.selection.data([values[, key]])
+Update Selection 을 리턴한다.</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;p&quot;).attr(&quot;class&quot;, &quot;p_one&quot;);
+d3.select(&quot;body&quot;).insert(&quot;p&quot;).attr(&quot;class&quot;, &quot;p_two&quot;);
+d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1]);
+</code></pre>
+
+<p>첫번째 p 인 p.p_one 을 리턴한다</p>
+
+<h3 id="d3-exit-selection">D3 Exit Selection</h3>
+
+<ul>
+<li>d3,selection,data(&hellip;).exit()</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;p&quot;).attr(&quot;class&quot;, &quot;p_one&quot;);
+d3.select(&quot;body&quot;).insert(&quot;p&quot;).attr(&quot;class&quot;, &quot;p_two&quot;);
+
+var updateSelection = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1]);
+updataSelectin.exit();
+</code></pre>
+
+<p>exit() 을 하면 두번째 p 인 p.p_two 를 리턴한다.</p>
+
+<h3 id="d3-enter-selection">D3 Enter Selection</h3>
+
+<ul>
+<li>d3.selection.data(&hellip;).enter()</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).insert(&quot;p&quot;).attr(&quot;class&quot;, &quot;p_one&quot;);
+
+var updateSelection = d3.select(&quot;body&quot;).select(&quot;p&quot;).data([1, 2]);
+updateSelection.enter();
+</code></pre>
+
+<p>enter() 는 updateSelection 에서 DOM element가 발견되지 않으면 각 요소의 placeholder element 를 리턴한다.</p>
+
+<pre><code class="language-JavaScript">var updateSelection = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1,2,3,4,5]);
+</code></pre>
+
+<p>이것은 5개의 DOM Object 가 리턴된다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="javascript-functions">JavaScript Functions</h2>
+
+<p>기본적으로는</p>
+
+<pre><code class="language-JavaScript">function functionName(var1, var2) {
+  // some code
+  return x;
+}
+functionName(args1, args2);
+</code></pre>
+
+<p>익명 함수 (anonymous function)</p>
+
+<pre><code class="language-JavaScript">var anonFunc = function(var1, var2) {
+  // some code
+  return x;
+}
+</code></pre>
+
+<h2 id="using-data-bound-to-dom-elements">Using Data Bound to DOM Elements</h2>
+
+<pre><code class="language-JavaScript">var pData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1]).enter().append(&quot;p&quot;);
+pData.data(); // [1]
+var manyPData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([9,0,2,1,0]).enter().append(&quot;p&quot;);
+manyPData.data(); // [9,0,2,1,0]
+</code></pre>
+
+<h3 id="d3-text-operator">D3 Text Operator</h3>
+
+<ul>
+<li>d3.selection.text([value])</li>
+</ul>
+
+<pre><code class="language-JavaScript">var pData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([1]).enter().append(&quot;p&quot;);
+pData.text(&quot;Hello&quot;); // p 에 text 가 생긴다
+var manyPData = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data([9,0,2,1,0]).enter().append(&quot;p&quot;);
+manyPData.text(&quot;Hello&quot;); // Hello 가 5 개가 생긴다~!
+
+manyPData.text(function() { return &quot;Anonymous Function&quot;; }); // 나중에 이런식으로 사용~
+</code></pre>
+
+<h3 id="variables-available-inside-d3-operators">Variables Available inside D3 Operators</h3>
+
+<ul>
+<li>d</li>
+<li>the __ data__ property</li>
+<li>i</li>
+<li>the element index</li>
+<li>this</li>
+<li>the DOM reference to the element in question</li>
+</ul>
               
             </div>
           </div>
