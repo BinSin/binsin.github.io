@@ -780,11 +780,31 @@ var circleStyle = circleElements.style(&quot;fill&quot;,greenRed);
     │
     │
     │
-  ∨
+   ∨
     Y
 </code></pre>
 
 <p>SVG 의 Space 는 이런 식으로 되어있다.</p>
+
+<h3 id="d3-append-svg-revisited">D3 Append SVG Revisited</h3>
+
+<ul>
+<li>d3.selection.append(&ldquo;svg&rdquo;);</li>
+</ul>
+
+<pre><code class="language-HTML">&lt;svg width-&quot;200&quot; height=&quot;200&quot;&gt;
+  ...
+&lt;/svg&gt;
+</code></pre>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, &quot;200&quot;)
+    .attr(&quot;height&quot;, &quot;200&quot;);
+</code></pre>
+
+<p>이 둘은 같다</p>
+
+<h3 id="d3-svg-coordinate-space">D3 &amp; SVG Coordinate Space</h3>
               
             </div>
           </div>
