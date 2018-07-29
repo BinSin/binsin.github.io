@@ -835,17 +835,18 @@ svgSelection.append(&quot;circle&quot;).attr(&quot;cx&quot;,&quot;225&quot;).att
 <h3 id="composite-data-types">Composite Data Types</h3>
 
 <ul>
-<li>Object
-<code>JavaScript
-var margin = { top: 20,
-                    right: 20,
-                    bottom: 30,
-                    left: 50 };
-</code>
-(key) : (value)</li>
-<li>Array
-Object 는 Array 가 아니므로 margin.length 가 없다</li>
+<li>Object</li>
 </ul>
+
+<pre><code class="language-JavaScript">var margin = { top: 20,
+                        right: 20,
+                        bottom: 30,
+                        left: 50 };
+</code></pre>
+
+<p>(key) : (value)
+- Array
+Object 는 Array 가 아니므로 margin.length 가 없다</p>
 
 <h3 id="special-data-types">Special Data Types</h3>
 
@@ -858,14 +859,124 @@ Object 는 Array 가 아니므로 margin.length 가 없다</li>
 
 <ul>
 <li>JavaScript Object Notation</li>
-<li>JavaScript 의 Object 와 JSON Object 와의 형태는 비슷하다.
-<code>JSON
-var margin = { &quot;top&quot;: 20,
-                    &quot;right&quot;: 20,
-                    &quot;bottom&quot;: 30,
-                    &quot;left&quot;: 50 };
-</code></li>
+<li>JavaScript 의 Object 와 JSON Object 와의 형태는 비슷하다.</li>
 </ul>
+
+<pre><code class="language-JSON">var margin = { &quot;top&quot;: 20,
+                        &quot;right&quot;: 20,
+                        &quot;bottom&quot;: 30,
+                        &quot;left&quot;: 50 };
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="d3-and-json">D3 and JSON</h2>
+
+<ul>
+<li>d3.keys(object)</li>
+</ul>
+
+<pre><code class="language-JavaScript">var margin = {&quot;top&quot;:20, &quot;right&quot;:20, &quot;bottom&quot;:30, &quot;left&quot;:50};
+d3.keys(margin); // {&quot;top&quot;, &quot;right&quot;, &quot;bttom&quot;, &quot;left&quot;}
+</code></pre>
+
+<ul>
+<li>d3.values(object)</li>
+</ul>
+
+<pre><code class="language-JavaScript">var margin = {&quot;top&quot;:20, &quot;right&quot;:20, &quot;bottom&quot;:30, &quot;left&quot;:&quot;50&quot;};
+d3.values(margin); // [20, 20, 30, &quot;50&quot;]
+</code></pre>
+
+<ul>
+<li>d3.entries(object)</li>
+</ul>
+
+<pre><code class="language-JavaScript">var margin = {&quot;top&quot;:20, &quot;right&quot;:20, &quot;bottom&quot;:30, &quot;left&quot;:50};
+d3.entries(margin); // [Object, Object, Object, Object]
+</code></pre>
+
+<h3 id="json-in-the-d3-data-operator">JSON in the D3 Data Operator</h3>
+
+<pre><code class="language-JavaScript">betterMargins = [ { &quot;direction&quot;:&quot;top&quot;,    &quot;units&quot;:&quot;20&quot; },
+                  { &quot;direction&quot;:&quot;right&quot;,  &quot;units&quot;:&quot;20&quot; },
+                  { &quot;direction&quot;:&quot;bottom&quot;, &quot;units&quot;:&quot;30&quot; },
+                  { &quot;direction&quot;:&quot;left&quot;,   &quot;units&quot;:&quot;50&quot; } ];
+
+var paragraphs = d3.select(&quot;body&quot;).selectAll(&quot;p&quot;).data(betterMargins).enter().append(&quot;p&quot;);
+
+paragraphs.text( function (d,i) { return d.direction + &quot;: &quot; + d.units; }); // top: 20, right: 20 이런 식으로 생긴다
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="d3-and-svg-basic-shapes">D3 and SVG Basic Shapes</h2>
+
+<ul>
+<li>Rectangle</li>
+<li>Circle</li>
+<li>Ellipse</li>
+<li>Straight Line</li>
+<li>Polyline, Polygon and Path</li>
+</ul>
+
+<pre><code class="language-JavaScript">// Rectangle
+var svgContainer = d3.select(&quot;body&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;200&quot;).attr(&quot;height&quot;,&quot;200&quot;);
+
+var rectangles = [ {&quot;x&quot;: 0,   &quot;y&quot;:   0, &quot;width&quot;: 30, &quot;height&quot;: 40},
+                   {&quot;x&quot;: 50,  &quot;y&quot;:  50, &quot;width&quot;: 30, &quot;height&quot;: 40},
+                   {&quot;x&quot;: 100, &quot;y&quot;: 100, &quot;width&quot;: 30, &quot;height&quot;: 40},
+                   {&quot;x&quot;: 150, &quot;y&quot;: 150, &quot;width&quot;: 30, &quot;height&quot;: 40} ];
+
+var svgRectangles = svgContainer.selectAll(&quot;rect&quot;).data(rectangles).enter().append(&quot;rect&quot;); // JSON 객체들이 SVG rectangle DOM element 로 바인드 된다.
+
+svgRectangles
+    .attr(&quot;x&quot;,      function (d,i) { return d.x;  })
+    .attr(&quot;y&quot;,      function (d,i) { return d.y;      })
+    .attr(&quot;width&quot;,  function (d,i) { return d.width;  })
+    .attr(&quot;height&quot;, function (d,i) { return d.height; });
+// 바인드 된 객체들을 그려준다.
+</code></pre>
+
+<h3 id="d3-and-svg-paths">D3 and SVG Paths</h3>
+
+<ul>
+<li>d3.svg.line()</li>
+</ul>
+
+<pre><code class="language-JavaScript">myData = [ { &quot;x&quot;:05, &quot;y&quot;:30   },{ &quot;x&quot;: 75, &quot;y&quot;:30  },
+           { &quot;x&quot;:75, &quot;y&quot;:90   },{ &quot;x&quot;:150, &quot;y&quot;:90  },
+           { &quot;x&quot;:150, &quot;y&quot;:150 },{ &quot;x&quot;:190, &quot;y&quot;:150 }];
+</code></pre>
+
+<p>line 함수를 이용하여 데이터를 알맞게 변형시킨다.</p>
+
+<pre><code class="language-JavaScript">var lineFunction = d3.svg.line()
+   .x(function(d) { return d.x; })
+   .y(function(d) { return d.y; })
+   .interpolate(&quot;linear&quot;);
+
+lineFunction(myData);
+</code></pre>
+
+<p>&ldquo;M5,30L75,30L75,90L150,90L150,150L190,150&rdquo; 라고 나오는데 이것을<br />
+&ldquo;M5,30 L75,30 L75,90 L150,90 L150,150 L190,150&rdquo; <br />
+로 바꾼 뒤</p>
+
+<pre><code class="language-JavaScript">var svgContainer = d3.select(&quot;body&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;200&quot;).attr(&quot;height&quot;,&quot;200&quot;);
+
+svgContainer.append(&quot;path&quot;).attr(&quot;d&quot;,&quot;M5,30 L75,30 L75,90 L150,90 L150,150 L190,150&quot;).attr(&quot;stroke&quot;, &quot;blue&quot;).attr(&quot;stroke-width&quot;, 2).attr(&quot;fill&quot;, &quot;none&quot;);
+// path 가 그려진다.
+</code></pre>
+
+<p>이렇게 할 수 있지만</p>
+
+<pre><code class="language-JavaScript">svgContainer.append(&quot;path&quot;).datum(myData).attr(&quot;d&quot;,lineFunction).attr(&quot;stroke&quot;, &quot;blue&quot;).attr(&quot;stroke-width&quot;, 2).attr(&quot;fill&quot;, &quot;none&quot;);
+</code></pre>
+
+<p>이렇게 하는 것이 좋다.</p>
               
             </div>
           </div>
