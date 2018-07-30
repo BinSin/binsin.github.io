@@ -1090,8 +1090,6 @@ d3.scale.linear()
 
 <h3 id="d3-scales-function">D3 Scales Function</h3>
 
-<p>y =</p>
-
 <pre><code class="language-JavaScript">var scaleUp = d3.scale.linear().domain([0,10]).range([0, 100]);
 // m = 10
 [scaleUp(1), scaleUp(2), scaleUp(5), scaleUp(8), scaleUp(9)];
@@ -1119,7 +1117,174 @@ var shiftLeft = d3.scale.linear().domain([100,200]).range([0,100]);
 
  var scaleReverse = d3.scale.linear().domain([0,10]).range([10,0]);
  [scaleReverse(1), scaleReverse(2), scaleReverse(5), scaleReverse(8), scaleReverse(9)];
- // 9, 8, 5, 2, 1]
+ // [9, 8, 5, 2, 1]
+</code></pre>
+
+<h3 id="svg-container-and-d3-scales">SVG Container and D3 Scales</h3>
+
+<pre><code class="language-HTML">&lt;svg width=&quot;200&quot; height=&quot;200&quot;&gt;
+</code></pre>
+
+<pre><code class="language-JavaScript">myData = [ { &quot;n&quot;:  0, &quot;p&quot;:  0 },{ &quot;n&quot;:200, &quot;p&quot;:200 },
+           { &quot;n&quot;:300, &quot;p&quot;:300 },{ &quot;n&quot;:400, &quot;p&quot;:400 }];
+
+minN = d3.min(myData, function(d) { return d.n })
+minP = d3.min(myData, function(d) { return d.p });
+maxN = d3.max(myData, function(d) { return d.n });
+maxN = d3.max(myData, function(d) { return d.p });
+
+domainN = d3.extent(myData, function(d) { return d.n }); // [0, 400]
+domainP = d3.extent(myData, function(d) { return d.p }); // [0, 400]
+
+rangeSVGX = [0,200];
+rangeSVGY = [0,200];
+
+var xLineScale = d3.scale.linear().domain(domainN).range(rangeSVGX);
+// xLineScale(0) = 0, xLineScale(400) = 200
+var yLineScale = d3.scale.linear().domain(domainP).range(rangeSVGY);
+// yLineScale(0) = 0, yLineScale(400) = 200
+</code></pre>
+
+<h3 id="d3-scales-and-svg-data-points">D3 Scales and SVG Data Points</h3>
+
+<pre><code class="language-JavaScript">// myData 의 배열 수 만큼 circle 요소가 생성
+var circleSelection = svgContainer.selectAll(&quot;circle&quot;).data(myData).enter().append(&quot;circle&quot;);
+
+// circle 요소에 데이터 추가
+var circleSelection = svgContainer.selectAll(&quot;circle&quot;).data(myData).enter().append(&quot;circle&quot;);
+
+// range 에 맞게 원이 생성
+var circleAttributes = circleSelection
+    .attr(&quot;cx&quot;,function(d,i){ return xLineScale(d.n) })
+    .attr(&quot;cy&quot;,function(d,i){ return yLineScale(d.p) })
+    .attr(&quot;r&quot;,&quot;15&quot;);
+</code></pre>
+
+<p>각 요소의 data 는 변하지 않는다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="svg-group-element">SVG Group Element</h2>
+
+<ul>
+<li>Grouping</li>
+<li>Transformation</li>
+</ul>
+
+<pre><code class="language-HTML">&lt;svg width=&quot;200&quot; height=&quot;200&quot;&gt;
+    &lt;g fill=&quot;purple&quot;&gt;
+        &lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;20&quot; /&gt;
+        &lt;circle cx=&quot;70&quot; cy=&quot;70&quot; r=&quot;20&quot; /&gt;
+    &lt;/g&gt;
+    &lt;g&gt;
+        &lt;rect x=&quot;110&quot; y=&quot;110&quot; height=&quot;30&quot; width=&quot;30&quot; /&gt;
+        &lt;rect x=&quot;160&quot; y=&quot;160&quot; height=&quot;30&quot; width=&quot;30&quot; /&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<h3 id="svg-group-element-transform">SVG Group Element Transform</h3>
+
+<pre><code class="language-HTML">&lt;svg width=&quot;200&quot; height=&quot;200&quot;&gt;
+    &lt;g transform=&quot;translate(20,-20)&quot;&gt;
+        &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;20&quot; /&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>x 좌표를 20 만큼 옮기고 y 좌표를 -20 만큼 옮긴다.</p>
+
+<pre><code class="language-HTML">&lt;svg width=&quot;200&quot; height=&quot;200&quot;&gt;
+    &lt;circle id=&quot;outside&quot; cx=&quot;40&quot; cy=&quot;40&quot; r=&quot;10&quot; fill=&quot;green&quot; /&gt;
+    &lt;g transform=&quot;translate(10,10)&quot;&gt;
+        &lt;circle id=&quot;inside&quot; cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;10&quot; fill=&quot;blue&quot; /&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>blue 색의 원이 green 색의 원 위에 놓여져서 blue 색의 원만 나온다. <br />
+안에 있는 태그일수록 위에 놓여진다~</p>
+
+<h3 id="d3-and-the-svg-group-element">D3 and the SVG Group Element</h3>
+
+<ul>
+<li>fill</li>
+<li>transform</li>
+</ul>
+
+<pre><code class="language-JavaScript">var groupSelection = svgSelection.append(&quot;g&quot;);
+
+groupSelection.append(&quot;circle&quot;).attr(&quot;cx&quot;,20).attr(&quot;cy&quot;,20).attr(&quot;r&quot;,20);
+groupSelection.append(&quot;circle&quot;).attr(&quot;cx&quot;,70).attr(&quot;cy&quot;,70).attr(&quot;r&quot;,20);
+
+svgSelection.append(&quot;rect&quot;).attr(&quot;x&quot;,110).attr(&quot;y&quot;,110).attr(&quot;height&quot;,30).attr(&quot;width&quot;,30);
+svgSelection.append(&quot;rect&quot;).attr(&quot;x&quot;,160).attr(&quot;y&quot;,160).attr(&quot;height&quot;,30).attr(&quot;width&quot;,30);
+
+groupSelection.attr(&quot;fill&quot;,&quot;purple&quot;);
+</code></pre>
+
+<p>g 태그 안에 있는 원들만 보라색이 된다.</p>
+
+<pre><code class="language-JavaScript">groupSelection.attr(&quot;transform&quot;,&quot;translate(10, 20)&quot;);
+</code></pre>
+
+<p>g 태그 안의 원들이 (10, 20) 만큼 이동된다.</p>
+
+<pre><code class="language-JavaScript">groupSelection.attr(&quot;transform&quot;,&quot;translate(&quot; + 50 + &quot;,&quot; + 50 + &quot;)&quot;);
+
+groupSelection.append(&quot;g&quot;).attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+</code></pre>
+
+<p>JavaScript 에서 string + number 는 string 이므로 이것이 가능하다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="svg-text-elements">SVG Text Elements</h2>
+
+<pre><code class="language-HTML">&lt;svg&gt;
+    &lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;20&quot; fill=&quot;purple&quot;/&gt;
+    &lt;text x=&quot;50&quot; y=&quot;50&quot; font-family=&quot;sans-serif&quot; font-size=&quot;12px&quot; fill=&quot;red&quot;&gt;Circle&lt;text&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>HTML 로는 이렇게 text 태그를 사용</p>
+
+<pre><code class="language-JavaScript">var svgText = svgContainer.append(&quot;text&quot;);
+svgText.attr(&quot;x&quot;,50).attr(&quot;y&quot;,50);
+svgText.text(&quot;circle&quot;);
+svgText.attr(&quot;font-family&quot;,&quot;sans-serif&quot;).attr(&quot;font-size&quot;,12);
+</code></pre>
+
+<p>JavaScript 로는 이렇게 text 를 사용</p>
+
+<h3 id="d3-data-and-svg-text">D3 Data and SVG Text</h3>
+
+<pre><code class="language-JavaScript">dataSet = [{&quot;name&quot;:&quot;Shanghai&quot;        , &quot;population&quot;:18, &quot;rank&quot;: 1},
+           {&quot;name&quot;:&quot;Guangzhou&quot;       , &quot;population&quot;:11, &quot;rank&quot;:10},
+           {&quot;name&quot;:&quot;Dongguan&quot;        , &quot;population&quot;: 8, &quot;rank&quot;:20},
+           {&quot;name&quot;:&quot;Cairo&quot;           , &quot;population&quot;: 7, &quot;rank&quot;:30},
+           {&quot;name&quot;:&quot;Saint Petersburg&quot;, &quot;population&quot;: 5, &quot;rank&quot;:40},
+           {&quot;name&quot;:&quot;New Taipei&quot;      , &quot;population&quot;: 4, &quot;rank&quot;:50}];
+
+// 원 그리기
+var svgContainer = d3.select(&quot;body&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,&quot;200&quot;).attr(&quot;height&quot;,&quot;200&quot;);
+
+var circles = svgContainer.selectAll(&quot;circle&quot;).data(dataSet).enter().append(&quot;circle&quot;);
+
+circles.attr(&quot;cx&quot;, function(d,i) { return (i+1)*25; })
+          .attr(&quot;cy&quot;, function(d,i) { return (i+1)*25; })
+          .attr(&quot;r&quot; , function(d,i) { return d.population });
+
+// text 나타내기
+var circleLabels = svgContainer.selectAll(&quot;text&quot;).data(dataSet).enter().append(&quot;text&quot;);
+
+circleLabels.attr(&quot;x&quot;, function(d, i) { return (i+1)*25; })
+                   .attr(&quot;y&quot;, function(d, i) { return (i+1)*25; });
+circleLabels.text(function(d, i) { return d.name; }); // name 이 출력
+circleLabels.style(&quot;fill&quot;, &quot;red&quot;); // 글씨를 빨간색으로
+circleLabels.text(function(d, i) { return &quot;rank: &quot; +  d.rank; }); // rank 가 출력
 </code></pre>
               
             </div>
