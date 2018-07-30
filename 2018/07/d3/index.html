@@ -1075,7 +1075,9 @@ myData = [ { &quot;n&quot;:  0, &quot;p&quot;:  0 },{ &quot;n&quot;:200, &quot;p
            { &quot;n&quot;:300, &quot;p&quot;:300 },{ &quot;n&quot;:400, &quot;p&quot;:400 }];
 
 d3.scale.linear()
+        // input
         .domain([0,400])  // y = mx + b
+        // output
         .range([0,200]);    // y = 1/2 * mx + b -&gt; 데이터를 1/2 으로 바꾼다.
 </code></pre>
 
@@ -1286,6 +1288,101 @@ circleLabels.text(function(d, i) { return d.name; }); // name 이 출력
 circleLabels.style(&quot;fill&quot;, &quot;red&quot;); // 글씨를 빨간색으로
 circleLabels.text(function(d, i) { return &quot;rank: &quot; +  d.rank; }); // rank 가 출력
 </code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="margin-convention">Margin Convention</h2>
+
+<ul>
+<li>좌표 공간이 Viewport의 공간에서 벗어날 수 있으므로 여백을 둬야한다.</li>
+</ul>
+
+<pre><code class="language-JavaScript">var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="d3-and-js-dates-and-times">D3 and JS Dates and Times</h2>
+
+<ul>
+<li>JavaScript 의 Composite Type 은 Object 와 Array</li>
+</ul>
+
+<pre><code class="language-JavaScript">var dateObject = new Date();
+
+new daet();
+new Date(value);
+new Date(dateString);
+new Date(year, month, day  
+                [, hour, minute,
+                second,
+              millisecond]);
+
+new Date(2018, 0); // 2018 - January
+new DATE(2017, 11); 2017 - December
+</code></pre>
+
+<ul>
+<li>d3.time.format(specifier)</li>
+</ul>
+
+<pre><code class="language-JavaScript">var dateFuture = new Date(2020, 0, 12);
+
+dateFuture.getFullYear(); // 2020
+dateFuture; // Sun Jan 12 2020 00:00:00 GMT-0500 (EST)
+
+var dateFormatter1 = d3.time.format(&quot;%A&quot;);
+dateFormatter1(DateFuture); // &quot;Sunday&quot;
+
+var dateFormatter2 = d3.time.format(&quot;%B&quot;);
+dateFormatter2(dateFuture); // &quot;January&quot;
+
+var dateFormatter3 = d3.time.format(&quot;%m&quot;);
+dateFormatter3(dateFuture); // month -&gt; &quot;01&quot;
+
+var dateFormatter4 = d3.time.format(&quot;%p&quot;);
+dateFormatter4(dateFuture); // &quot;AM&quot;
+</code></pre>
+
+<h3 id="d3-time-scales">D3 Time Scales</h3>
+
+<ul>
+<li>d3.time.scale()</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.time.scale()
+        .domain([date_left, date_right])
+        .range([number_left, number_right]))
+</code></pre>
+
+<p>D3 Time Scale 은 한 데이터 세트를 다른 데이터 세트로 확장할 수 있기 때문에 매우 유용하다.</p>
+
+<pre><code class="language-JavaScript">// Scale down
+var timeScale1 = d3.time.scale()
+    .domain([new Date(2020,0,1),new Date(2020,0,11)])
+    .range([0,10]);
+[timeScale1(new Date(2020,0,3)), timeScale1(new Date(2020,0,5)), timeScale1(new Date(2020,0,7))];
+// [2, 4, 6]
+
+// Scale up
+var timeScale2 = d3.time.scale()
+    .domain([new Date(2020, 0, 1), new Date(2020, 0, 11)])
+    .range([0, 100]);
+[timeScale2(new Date(2020,0,3)), timeScale2(new Date(2020,0,5)), timeScale2(new Date(2020,0,7))];
+// [20, 40, 60]
+</code></pre>
+
+<p>이렇게</p>
               
             </div>
           </div>
