@@ -1492,7 +1492,58 @@ var circle = mySVG.selectAll(&quot;circle&quot;)
 var circleAttributes = circle.attr(&quot;cx&quot;, function(d,i) { return myScale(d.x) }).attr(&quot;cy&quot;, function(d,i) { return myScale(d.y); }).attr(&quot;r&quot;, 5);
 </code></pre>
 
-<p>익명함수의 리턴값에 myScale 함수를 사용하면 주어진 스케일에 맞게 원이 표시된다.</p>
+<p>익명함수의 리턴값에 myScale 함수를 사용하면 주어진 스케일에 맞게 원이 표시된다. <br /></p>
+
+<ul>
+<li>많은 데이터 넣기</li>
+</ul>
+
+<pre><code class="language-JavaScript">// 데이터
+dataSet = [{&quot;name&quot;:&quot;Shanghai&quot;        , &quot;population&quot;:18, &quot;rank&quot;: 1},
+           {&quot;name&quot;:&quot;Guangzhou&quot;       , &quot;population&quot;:11, &quot;rank&quot;:10},
+           {&quot;name&quot;:&quot;Dongguan&quot;        , &quot;population&quot;: 8, &quot;rank&quot;:20},
+           {&quot;name&quot;:&quot;Cairo&quot;           , &quot;population&quot;: 7, &quot;rank&quot;:30},
+           {&quot;name&quot;:&quot;Saint Petersburg&quot;, &quot;population&quot;: 5, &quot;rank&quot;:40},
+           {&quot;name&quot;:&quot;New Taipei&quot;      , &quot;population&quot;: 4, &quot;rank&quot;:50}];
+
+// svgViewport 추가
+var svgViewport = d3.select(&quot;body&quot;).append(&quot;svg&quot;).attr(&quot;width&quot;,300).attr(&quot;height&quot;,300);
+
+// 여백을 넣어 innerSpace 공간 추가
+var margin = {top: 50, right: 50, bottom: 50, left: 50},
+   width = 300 - margin.left - margin.right,           
+   height = 300 - margin.top - margin.bottom;
+var innerSpace = svgViewport.append(&quot;g&quot;).attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+// x, y 축 그리기
+var yAxisScale = d3.scale.linear().domain([0,50]).range([0,width]);
+var xAxisScale = d3.scale.linear().domain([0,20]).range([0,height]);
+
+var myXAxis = d3.svg.axis().scale(xAxisScale).orient(&quot;top&quot;);
+var myYAxis = d3.svg.axis().scale(yAxisScale).orient(&quot;left&quot;);
+
+var axisXGroup = innerSpace.append(&quot;g&quot;).call( myXAxis );
+var axisyGroup = innerSpace.append(&quot;g&quot;).call( myYAxis );
+
+// 데이터에 맞는 원 그리기
+var circles = innerSpace.append(&quot;g&quot;).selectAll(&quot;circle&quot;).data(dataSet).enter().append(&quot;circle&quot;);
+
+var circleAttributes = circles
+    .attr(&quot;cx&quot;, function(d,i) { return xAxisScale(d.population); })
+    .attr(&quot;cy&quot;, function(d,i) { return yAxisScale(d.rank); })
+    .attr(&quot;r&quot;,5);
+
+// 데이터 text 표시
+var text = innerSpace.append(&quot;g&quot;).selectAll(&quot;text&quot;).data(dataSet).enter().append(&quot;text&quot;);
+
+tributes = text
+    .attr(&quot;x&quot;, function(d,i) { return xAxisScale(d.population); })
+    .attr(&quot;y&quot;, function(d,i) { return yAxisScale(d.rank); })
+    .text(function(d,i) { return d.name; })
+    .style(&quot;fill&quot;,&quot;red&quot;);
+</code></pre>
+
+<h2 id="simple-http-server-with-python">Simple HTTP Server with Python</h2>
               
             </div>
           </div>
