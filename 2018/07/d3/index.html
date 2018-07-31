@@ -1383,6 +1383,116 @@ var timeScale2 = d3.time.scale()
 </code></pre>
 
 <p>날짜 및 시간이 포함된 Data Visualization 을 만들 때 유용하다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="d3-axes">D3 Axes</h2>
+
+<ul>
+<li>d3.svg.axis()</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, 200)
+    .attr(&quot;height&quot;,200)
+  .append(&quot;g&quot;)
+    .call( d3.svg.axis() );
+</code></pre>
+
+<p>scale 을 주지 않으면 0 과 1 사이로 된다.</p>
+
+<pre><code class="language-JavaScript">var myScale = d3.scale.linear()
+    .domain( [0, 10] )
+    .range ( [0,200] );
+
+var myAxis = d3.svg.axis()
+    .scale(myScale);
+
+var mySVG = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, 200)
+    .attr(&quot;height&quot;,200);
+
+var axisGroup = mySVG.append(&quot;g&quot;).call( myAxis );
+</code></pre>
+
+<p>domain([0,10]) 이므로 0 에서 10 까지의 x 축이 그려진다.</p>
+
+<pre><code class="language-JavaScript">var margin = {top: 50, right: 50, bottom: 50, left: 50},
+    width = 300 - margin.left - margin.right,           
+    height = 300 - margin.top - margin.bottom;
+
+var myScale = d3.scale.linear()
+    .domain( [0,10] )
+    .range ( [0,width] );
+
+var myAxis = d3.svg.axis()
+    .scale(myScale);
+
+var mySVG = d3.select(&quot;body&quot;).append(&quot;svg&quot;)                 
+    .attr(&quot;width&quot;, width + margin.left + margin.right)      
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)    
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+var axisGroup = mySVG.append(&quot;g&quot;).call( myAxis );
+</code></pre>
+
+<p>margin 을 줘서 x축을 그린다.</p>
+
+<h3 id="d3-axes-manipulation">D3 Axes Manipulation</h3>
+
+<ul>
+<li>d3.svg.axis().orient([orientation])</li>
+</ul>
+
+<pre><code class="language-JavaScript">var margin = {top: 50, right: 50, bottom: 50, left: 50},
+    width = 300 - margin.left - margin.right,           
+    height = 300 - margin.top - margin.bottom;
+
+var myScale = d3.scale.linear()
+    .domain( [0, 10] )
+    .range ( [0,width] );
+
+var myAxis = d3.svg.axis().scale(myScale).orient(&quot;top&quot;);
+
+var mySVG = d3.select(&quot;body&quot;).append(&quot;svg&quot;)                 
+    .attr(&quot;width&quot;, width + margin.left + margin.right)      
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)    
+  .append(&quot;g&quot;)                                                               
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+var axisGroup = mySVG.append(&quot;g&quot;).call( myAxis );
+</code></pre>
+
+<p>orientaion 을 top 으로 줬기 때문에 단위가 위에 나온다. <br />
+만약 left로 주면 y축 모양으로 왼쪽에 단위가 나온다. <br />
+따라서</p>
+
+<pre><code class="language-JavaScript">var myXAxis = d3.svg.axis().scale(myScale).orient(&quot;top&quot;);
+var myYAxis = d3.svg.axis().scale(myScale).orient(&quot;left&quot;);
+var axisXGroup = mySVG.append(&quot;g&quot;).call(myXAxis);
+var axisYGroup = mySVG.append(&quot;g&quot;).call(myYAxis);
+</code></pre>
+
+<p>이렇게 하면 x, y 축 모양이 만들어진다.</p>
+
+<h3 id="d3-scales-for-data">D3 Scales For Data</h3>
+
+<ul>
+<li>(5, 5) 에 원 그리기</li>
+</ul>
+
+<pre><code class="language-JavaScript">var myDataPoint = [{&quot;x&quot;:5, &quot;y&quot;:5}];
+var circle = mySVG.selectAll(&quot;circle&quot;)
+                                .data(myDataPoint)
+                                .enter()
+                                .append(&quot;circle&quot;);
+
+var circleAttributes = circle.attr(&quot;cx&quot;, function(d,i) { return myScale(d.x) }).attr(&quot;cy&quot;, function(d,i) { return myScale(d.y); }).attr(&quot;r&quot;, 5);
+</code></pre>
+
+<p>익명함수의 리턴값에 myScale 함수를 사용하면 주어진 스케일에 맞게 원이 표시된다.</p>
               
             </div>
           </div>
