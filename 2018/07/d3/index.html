@@ -1670,7 +1670,7 @@ callback(error,data)
 var callbackData;
 
 d3.tsv(&quot;data.tsv&quot;,
-  fuction(error, data) {
+  function(error, data) {
     callbackError = error;
     callbackData = data;
   }
@@ -1678,6 +1678,89 @@ d3.tsv(&quot;data.tsv&quot;,
 </code></pre>
 
 <p>이렇게 data 파일 형식에 따라 함수를 달리하여 데이터를 받을 수 있다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="basic-chart">Basic Chart</h2>
+
+<h3 id="line-chart">Line Chart</h3>
+
+<ul>
+<li><a href="https://bl.ocks.org/mbostock/3883245">Code and Data</a>
+<a href="https://avatars2.githubusercontent.com/u/230541?v=4&amp;s=60">https://avatars2.githubusercontent.com/u/230541?v=4&amp;s=60</a></li>
+</ul>
+
+<pre><code class="language-JavaScript">var callbackError;
+var callbackData;
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+width = 960 - margin.left - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+// day는 d, month는 b, year은 y
+var parseDate = d3.time.format(&quot;%d-%b-%y&quot;).parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+// y축이 위로 상승
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(&quot;bottom&quot;);
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient(&quot;left&quot;);
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.close); });
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+// csv 형식의 데이터를 처리
+d3.csv(&quot;data.csv&quot;, function(error,data) {
+    callbackError = error;
+    callbackData  = data;
+});
+
+callbackData.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.close = +d.close;
+});
+
+x.domain(d3.extent(callbackData, function(d) { return d.date; }));
+y.domain(d3.extent(callbackData, function(d) { return d.close; }));
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
+    .call(xAxis);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis)
+  .append(&quot;text&quot;)
+    .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
+    .attr(&quot;y&quot;, 6)
+    .attr(&quot;dy&quot;, &quot;.71em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(&quot;Price ($)&quot;);
+
+svg.append(&quot;path&quot;)
+    .datum(callbackData)
+    .attr(&quot;class&quot;, &quot;line&quot;)
+    .attr(&quot;d&quot;, line)
+    .attr(&quot;fill&quot;,&quot;none&quot;)
+    .attr(&quot;stroke&quot;,&quot;steelblue&quot;)
+    .attr(&quot;stroke-width&quot;,&quot;1.5px&quot;);
+</code></pre>
               
             </div>
           </div>
