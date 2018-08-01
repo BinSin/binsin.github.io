@@ -1164,6 +1164,81 @@ var circleAttributes = circleSelection
 
 <p>각 요소의 data 는 변하지 않는다.</p>
 
+<h3 id="d3-ordinal-scales">D3 Ordinal Scales</h3>
+
+<p>이름이나 캍테고리와 같은 도메인의 경우 사용 <br /></p>
+
+<ul>
+<li><p>d3.scale.ordinal()</p></li>
+
+<li><p>변수
+```JavaScript
+var alphabet = [&ldquo;A&rdquo;, &ldquo;B&rdquo;, &ldquo;C&rdquo;, &ldquo;D&rdquo;, &ldquo;E&rdquo;, &ldquo;F&rdquo;, &ldquo;G&rdquo;, &ldquo;H&rdquo;, &ldquo;I&rdquo;, &ldquo;J&rdquo;, &ldquo;K&rdquo;, &ldquo;L&rdquo;, &ldquo;M&rdquo;, &ldquo;N&rdquo;, &ldquo;O&rdquo;, &ldquo;P&rdquo;, &ldquo;Q&rdquo;, &ldquo;R&rdquo;, &ldquo;S&rdquo;, &ldquo;T&rdquo;, &ldquo;U&rdquo;, &ldquo;V&rdquo;, &ldquo;W&rdquo;, &ldquo;X&rdquo;, &ldquo;Y&rdquo;, &ldquo;Z&rdquo;];</p></li>
+</ul>
+
+<p>var numbersUP = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
+var numbersDN = [26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1];</p>
+
+<pre><code>
+- range(numbersUP)
+
+```JavaScript
+var ordinalScale = d3.scale.ordinal();
+ordinalScale.domain(alphabet);
+ordinalScale.range(numbersUP);
+ordinalScale(&quot;A&quot;) // 1
+ordinalScale(&quot;Z&quot;) // 26
+</code></pre>
+
+<ul>
+<li>range(numbersDN)</li>
+</ul>
+
+<pre><code class="language-JavaScript">var ordinalScale = d3.scale.ordinal();
+ordinalScale.domain(alphabet);
+ordinalScale.range(numbersDN);
+ordinalScale(&quot;A&quot;) // 26
+ordinalScale(&quot;Z&quot;) // 1
+</code></pre>
+
+<ul>
+<li>scale.rangePoints();</li>
+</ul>
+
+<pre><code class="language-JavaScript">var ordinalScale = d3.scale.ordinal();
+ordinalScale.domain(alphabet);
+ordinalScale.rangePoints([1, 26])
+ordinalScale(&quot;A&quot;) // 1
+ordinalScale(&quot;Z&quot;) // 26
+</code></pre>
+
+<ul>
+<li>scale.rangeBands</li>
+</ul>
+
+<pre><code class="language-JavaScript">var ordinalScale = d3.scale.ordinal();
+ordinalScale.domain(alphabet);
+ordinalScale.rangeBands([1,27]);
+ordinalScale.rangeBand(); // 1
+ordinalScale(&quot;A&quot;) // 1
+ordinalScale(&quot;Z&quot;) // 26
+</code></pre>
+
+<ul>
+<li>d3.scale.category()
+<code>JavaScript
+d3.scale.category10()
+// 10 가지의 카테고리 색상 범위를 제공
+d3.scale.category20()
+// 20 가지의 카테고리 색상 범위를 제공
+d3.scale.category20b()
+// category20 과 다른 10 가지의 카테고리 색상 범위를 제공
+d3.scale.category20c()
+// [color(1),color(2), ... , color(10)];
+// category20, category20b 와 다른 10 가지의 카테고리 색상 범위를 제공
+</code></li>
+</ul>
+
 <p><br />
 <br /></p>
 
@@ -1725,7 +1800,7 @@ var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
     .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
 
 // csv 형식의 데이터를 처리
-d3.csv(&quot;data.csv&quot;, function(error,data) {
+d3.tsv(&quot;data.tsv&quot;, function(error,data) {
     callbackError = error;
     callbackData  = data;
 });
