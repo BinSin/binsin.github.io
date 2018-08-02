@@ -1227,14 +1227,13 @@ ordinalScale(&quot;Z&quot;) // 26
 <ul>
 <li>d3.scale.category()
 <code>JavaScript
-d3.scale.category10()
+d3.scale.category10();
 // 10 가지의 카테고리 색상 범위를 제공
-d3.scale.category20()
+d3.scale.category20();
 // 20 가지의 카테고리 색상 범위를 제공
-d3.scale.category20b()
+d3.scale.category20b();
 // category20 과 다른 10 가지의 카테고리 색상 범위를 제공
-d3.scale.category20c()
-// [color(1),color(2), ... , color(10)];
+d3.scale.category20c();
 // category20, category20b 와 다른 10 가지의 카테고리 색상 범위를 제공
 </code></li>
 </ul>
@@ -1762,7 +1761,7 @@ d3.tsv(&quot;data.tsv&quot;,
 <h3 id="line-chart">Line Chart</h3>
 
 <ul>
-<li><a href="https://bl.ocks.org/mbostock/3883245">Code and Data</a>
+<li><a href="https://bl.ocks.org/mbostock/3883245">Line Chart</a>
 <a href="https://avatars2.githubusercontent.com/u/230541?v=4&amp;s=60">https://avatars2.githubusercontent.com/u/230541?v=4&amp;s=60</a></li>
 </ul>
 
@@ -1835,6 +1834,109 @@ svg.append(&quot;path&quot;)
     .attr(&quot;fill&quot;,&quot;none&quot;)
     .attr(&quot;stroke&quot;,&quot;steelblue&quot;)
     .attr(&quot;stroke-width&quot;,&quot;1.5px&quot;);
+</code></pre>
+
+<h3 id="scatterplot">Scatterplot</h3>
+
+<ul>
+<li><a href="https://bl.ocks.org/mbostock/3887118">Scatterplot</a></li>
+</ul>
+
+<pre><code class="language-JavaScript">var callbackError;
+var callbackData;
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .range([0, width]);
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(&quot;bottom&quot;);
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient(&quot;left&quot;);
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+d3.tsv(&quot;data.tsv&quot;, function(error,data) {
+    callbackError = error;
+    callbackData  = data;
+});
+
+callbackData.forEach(function(d) {
+    d.sepalLength = +d.sepalLength;
+    d.sepalWidth = +d.sepalWidth;
+});
+
+// nice() 함수는 도메인의 범위를 가장 가까운 round value 값으로 변경시킨다.
+//이를  Nicing 이라고 하는데  도메인이 불규칙한 데이터로 계산 될 때 유용하다.
+x.domain(d3.extent(callbackData, function(d) { return d.sepalWidth; })).nice();
+y.domain(d3.extent(callbackData, function(d) { return d.sepalLength; })).nice();
+
+var color = d3.scale.category10();
+
+// x축
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
+    .call(xAxis)
+  .append(&quot;text&quot;)
+    .attr(&quot;class&quot;, &quot;label&quot;)
+    .attr(&quot;x&quot;, width)
+    .attr(&quot;y&quot;, -6)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(&quot;Sepal Width (cm)&quot;);
+
+// y축
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis)
+  .append(&quot;text&quot;)
+    .attr(&quot;class&quot;, &quot;label&quot;)
+    .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
+    .attr(&quot;y&quot;, 6)
+    .attr(&quot;dy&quot;, &quot;.71em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(&quot;Sepal Length (cm)&quot;);
+
+// 데이터 원으로 표시
+svg.selectAll(&quot;.dot&quot;)
+    .data(callbackData)
+  .enter().append(&quot;circle&quot;)
+    .attr(&quot;class&quot;, &quot;dot&quot;)
+    .attr(&quot;r&quot;, 3.5)
+    .attr(&quot;cx&quot;, function(d) { return x(d.sepalWidth); })
+    .attr(&quot;cy&quot;, function(d) { return y(d.sepalLength); })
+    .style(&quot;fill&quot;, function(d) { return color(d.species); });
+
+// 범주값 표시
+var legend = svg.selectAll(&quot;.legend&quot;)
+    .data(color.domain()) // &quot;3가지의 종이 도메인으로 지정된다.&quot;
+  .enter().append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;legend&quot;)
+    .attr(&quot;transform&quot;, function(d, i) { return &quot;translate(0,&quot; + i * 20 + &quot;)&quot;; });
+
+legend.append(&quot;rect&quot;)
+.attr(&quot;x&quot;, width - 18)
+.attr(&quot;width&quot;, 18)
+.attr(&quot;height&quot;, 18)
+.style(&quot;fill&quot;, color);
+
+legend.append(&quot;text&quot;)
+    .attr(&quot;x&quot;, width - 24)
+    .attr(&quot;y&quot;, 9)
+    .attr(&quot;dy&quot;, &quot;.35em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(function(d) { return d; });
 </code></pre>
               
             </div>
