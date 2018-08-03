@@ -2377,25 +2377,25 @@ d3.event.pageY;
 <li>Scatterplot 에서 활용</li>
 </ul>
 
-<p>```JavaScript
-// opacity : 투명도 설정
+<pre><code class="language-JavaScript">// opacity : 투명도 설정
 // dot 안으로 들어가면 div 요소가 추가되어 글이 나온다.
 function mouseover(d) {
-    div.html(&ldquo;Sepal Width: &ldquo; + d.sepalWidth + &ldquo;<br />&rdquo; + &ldquo;Sepal Length: &ldquo; + d.sepalLength)
-    .style(&ldquo;left&rdquo;, (d3.event.pageX + 9) + &ldquo;px&rdquo;)
-    .style(&ldquo;top&rdquo;,  (d3.event.pageY - 43) + &ldquo;px&rdquo;)
-    .style(&ldquo;opacity&rdquo;, 1);
-}</p>
+    div.html(&quot;Sepal Width: &quot; + d.sepalWidth + &quot;&lt;br /&gt;&quot; + &quot;Sepal Length: &quot; + d.sepalLength)
+    .style(&quot;left&quot;, (d3.event.pageX + 9) + &quot;px&quot;)
+    .style(&quot;top&quot;,  (d3.event.pageY - 43) + &quot;px&quot;)
+    .style(&quot;opacity&quot;, 1);
+}
 
-<p>// dot 밖으로 나가면 div 요소가 투명해짐
+// dot 밖으로 나가면 div 요소가 투명해짐
 function mouseout() {
-    div.style(&ldquo;opacity&rdquo;, 1e-6);
-}</p>
+    div.style(&quot;opacity&quot;, 1e-6);
+}
 
-<p>// mouse event 설정
-d3.selectAll(&ldquo;.dot&rdquo;)
-    .on(&ldquo;mouseover&rdquo;, mouseover)
-    .on(&ldquo;mouseout&rdquo;, mouseout);</p>
+// mouse event 설정
+d3.selectAll(&quot;.dot&quot;)
+    .on(&quot;mouseover&quot;, mouseover)
+    .on(&quot;mouseout&quot;, mouseout);
+</code></pre>
               
             </div>
           </div>
