@@ -2087,113 +2087,116 @@ svg.append(&quot;g&quot;)
     .style(&quot;fill&quot;,&quot;none&quot;)
     .style(&quot;stroke&quot;,&quot;#000&quot;)
     .style(&quot;shape-rendering&quot;, &quot;crispEdges&quot;);
-  ````
+</code></pre>
 
-### Grouped Bar Chart
-- (Grouped Bar Chart)[https://bl.ocks.org/mbostock/3887051]
+<h3 id="grouped-bar-chart">Grouped Bar Chart</h3>
+
+<ul>
+<li>(Grouped Bar Chart)[<a href="https://bl.ocks.org/mbostock/3887051">https://bl.ocks.org/mbostock/3887051</a>]
 ```JavaScript
-var callbackError, callbackData;
+var callbackError, callbackData;</li>
+</ul>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+<p>var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;</p>
 
-var x0 = d3.scale.ordinal()
+<p>var x0 = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 var x1 = d3.scale.ordinal();
 var y = d3.scale.linear()
-    .range([height, 0]);
+    .range([height, 0]);</p>
 
-var color = d3.scale.ordinal()    
-    .range([&quot;#98abc5&quot;, &quot;#8a89a6&quot;, &quot;#7b6888&quot;, &quot;#6b486b&quot;, &quot;#a05d56&quot;, &quot;#d0743c&quot;, &quot;#ff8c00&quot;]);
+<p>var color = d3.scale.ordinal()<br />
+    .range([&ldquo;#98abc5&rdquo;, &ldquo;#8a89a6&rdquo;, &ldquo;#7b6888&rdquo;, &ldquo;#6b486b&rdquo;, &ldquo;#a05d56&rdquo;, &ldquo;#d0743c&rdquo;, &ldquo;#ff8c00&rdquo;]);</p>
 
-var xAxis = d3.svg.axis()
+<p>var xAxis = d3.svg.axis()
     .scale(x0)
-    .orient(&quot;bottom&quot;);
-// d3.format(&quot;.2s&quot;)(1000000); -&gt; 1.0M // 백만
+    .orient(&ldquo;bottom&rdquo;);
+// d3.format(&ldquo;.2s&rdquo;)(1000000); -&gt; 1.0M // 백만
 var yAxis = d3.svg.axis()
     .scale(y)
-    .orient(&quot;left&quot;)
-    .tickFormat(d3.format(&quot;.2s&quot;));
+    .orient(&ldquo;left&rdquo;)
+    .tickFormat(d3.format(&ldquo;.2s&rdquo;));</p>
 
-var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
-    .attr(&quot;width&quot;, width + margin.left + margin.right)
-    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
-  .append(&quot;g&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+<p>var svg = d3.select(&ldquo;body&rdquo;).append(&ldquo;svg&rdquo;)
+    .attr(&ldquo;width&rdquo;, width + margin.left + margin.right)
+    .attr(&ldquo;height&rdquo;, height + margin.top + margin.bottom)
+  .append(&ldquo;g&rdquo;)
+    .attr(&ldquo;transform&rdquo;, &ldquo;translate(&rdquo; + margin.left + &ldquo;,&rdquo; + margin.top + &ldquo;)&rdquo;);</p>
 
-d3.csv(&quot;data.csv&quot;, function(error,data) {
+<p>d3.csv(&ldquo;data.csv&rdquo;, function(error,data) {
     callbackError = error;
     callbackData  = data;
     console.log([callbackError, callbackData.length]);
-});
+});</p>
 
-// State 를 제외한 키들을 배열에 넣는다.
-var ageNames = d3.keys(callbackData[0]).filter(function(key) { return key !== &quot;State&quot;; });
+<p>// State 를 제외한 키들을 배열에 넣는다.
+var ageNames = d3.keys(callbackData[0]).filter(function(key) { return key !== &ldquo;State&rdquo;; });</p>
 
-callbackData.forEach(function(d) {
+<p>callbackData.forEach(function(d) {
     d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
-});
+});</p>
 
-// State 배열을 도메인으로 함 -&gt; CA, TX, ...
+<p>// State 배열을 도메인으로 함 -&gt; CA, TX, &hellip;
 x0.domain(callbackData.map(function(d) { return d.State; }));
-// ageNames -&gt; Under 5, ...
+// ageNames -&gt; Under 5, &hellip;
 x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
-y.domain([0, d3.max(callbackData, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+y.domain([0, d3.max(callbackData, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);</p>
 
-svg.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;x axis&quot;)
-    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
-    .call(xAxis);
+<p>svg.append(&ldquo;g&rdquo;)
+    .attr(&ldquo;class&rdquo;, &ldquo;x axis&rdquo;)
+    .attr(&ldquo;transform&rdquo;, &ldquo;translate(0,&rdquo; + height + &ldquo;)&rdquo;)
+    .call(xAxis);</p>
 
-svg.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;y axis&quot;)
+<p>svg.append(&ldquo;g&rdquo;)
+    .attr(&ldquo;class&rdquo;, &ldquo;y axis&rdquo;)
     .call(yAxis)
-  .append(&quot;text&quot;)
-    .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
-    .attr(&quot;y&quot;, 6)
-    .attr(&quot;dy&quot;, &quot;.71em&quot;)
-    .style(&quot;text-anchor&quot;, &quot;end&quot;)
-    .text(&quot;Population&quot;);
+  .append(&ldquo;text&rdquo;)
+    .attr(&ldquo;transform&rdquo;, &ldquo;rotate(-90)&rdquo;)
+    .attr(&ldquo;y&rdquo;, 6)
+    .attr(&ldquo;dy&rdquo;, &ldquo;.71em&rdquo;)
+    .style(&ldquo;text-anchor&rdquo;, &ldquo;end&rdquo;)
+    .text(&ldquo;Population&rdquo;);</p>
 
-// State 의 범위만큼 transform 하는 g 태그 생성
-var state = svg.selectAll(&quot;.state&quot;)
+<p>// State 의 범위만큼 transform 하는 g 태그 생성
+var state = svg.selectAll(&ldquo;.state&rdquo;)
     .data(callbackData)
-  .enter().append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;g&quot;)
-    .attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + x0(d.State) + &quot;,0)&quot;; });
+  .enter().append(&ldquo;g&rdquo;)
+    .attr(&ldquo;class&rdquo;, &ldquo;g&rdquo;)
+    .attr(&ldquo;transform&rdquo;, function(d) { return &ldquo;translate(&rdquo; + x0(d.State) + &ldquo;,0)&rdquo;; });</p>
 
-// d.ages = {d.name, d.value} 로 되어 있다.
+<p>// d.ages = {d.name, d.value} 로 되어 있다.
 // 이름에 따라 색을 다르게 채운다.
-state.selectAll(&quot;rect&quot;)
+state.selectAll(&ldquo;rect&rdquo;)
     .data(function(d) { return d.ages; })
-  .enter().append(&quot;rect&quot;)
-    .attr(&quot;width&quot;, x1.rangeBand())
-    .attr(&quot;x&quot;, function(d) { return x1(d.name); })
-    .attr(&quot;y&quot;, function(d) { return y(d.value); })
-    .attr(&quot;height&quot;, function(d) { return height - y(d.value); })
-    .style(&quot;fill&quot;, function(d) { return color(d.name); });
+  .enter().append(&ldquo;rect&rdquo;)
+    .attr(&ldquo;width&rdquo;, x1.rangeBand())
+    .attr(&ldquo;x&rdquo;, function(d) { return x1(d.name); })
+    .attr(&ldquo;y&rdquo;, function(d) { return y(d.value); })
+    .attr(&ldquo;height&rdquo;, function(d) { return height - y(d.value); })
+    .style(&ldquo;fill&rdquo;, function(d) { return color(d.name); });</p>
 
-// ageNames 를 slice() 함수를 이용하여 나눠서 g 태그 만듬
-var legend = svg.selectAll(&quot;.legend&quot;)
+<p>// ageNames 를 slice() 함수를 이용하여 나눠서 g 태그 만듬
+var legend = svg.selectAll(&ldquo;.legend&rdquo;)
     .data(ageNames.slice().reverse())
-  .enter().append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;legend&quot;)
-    .attr(&quot;transform&quot;, function(d, i) { return &quot;translate(0,&quot; + i * 20 + &quot;)&quot;; });
+  .enter().append(&ldquo;g&rdquo;)
+    .attr(&ldquo;class&rdquo;, &ldquo;legend&rdquo;)
+    .attr(&ldquo;transform&rdquo;, function(d, i) { return &ldquo;translate(0,&rdquo; + i * 20 + &ldquo;)&rdquo;; });</p>
 
-legend.append(&quot;rect&quot;)
-    .attr(&quot;x&quot;, width - 18)
-    .attr(&quot;width&quot;, 18)
-    .attr(&quot;height&quot;, 18)
-    .style(&quot;fill&quot;, color);
+<p>legend.append(&ldquo;rect&rdquo;)
+    .attr(&ldquo;x&rdquo;, width - 18)
+    .attr(&ldquo;width&rdquo;, 18)
+    .attr(&ldquo;height&rdquo;, 18)
+    .style(&ldquo;fill&rdquo;, color);</p>
 
-legend.append(&quot;text&quot;)
-    .attr(&quot;x&quot;, width - 24)
-    .attr(&quot;y&quot;, 9)
-    .attr(&quot;dy&quot;, &quot;.35em&quot;)
-    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+<p>legend.append(&ldquo;text&rdquo;)
+    .attr(&ldquo;x&rdquo;, width - 24)
+    .attr(&ldquo;y&rdquo;, 9)
+    .attr(&ldquo;dy&rdquo;, &ldquo;.35em&rdquo;)
+    .style(&ldquo;text-anchor&rdquo;, &ldquo;end&rdquo;)
     .text(function(d) { return d; });
-</code></pre>
+```</p>
 
 <h3 id="stacked-bar-chart">Stacked Bar Chart</h3>
 
