@@ -2213,6 +2213,114 @@ legend.append(&quot;text&quot;)
 <ul>
 <li><a href="https://bl.ocks.org/mbostock/3886208">Stacked Bar Chart</a></li>
 </ul>
+
+<pre><code class="language-JavaScript">var callbackError, callbackData;
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .rangeRound([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range([&quot;#98abc5&quot;, &quot;#8a89a6&quot;, &quot;#7b6888&quot;, &quot;#6b486b&quot;, &quot;#a05d56&quot;, &quot;#d0743c&quot;, &quot;#ff8c00&quot;]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(&quot;bottom&quot;);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient(&quot;left&quot;)
+    .tickFormat(d3.format(&quot;.2s&quot;));
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+d3.csv(&quot;data.csv&quot;, function(error,data) {
+    callbackError = error;
+    callbackData  = data;
+    console.log([callbackError, callbackData.length]);
+});
+
+// State 를 제외한 키 값들이 color의 도메인 범위가 된다
+color.domain(d3.keys(callbackData[0]).filter(function(key) { return key !== &quot;State&quot;; }));
+
+// 데이터가 Stack 처럼 쌓여서 보여줄 수 있게 해준다.
+callbackData.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+});
+
+// total 의 내림차순
+// ex) .sort(function(a,b) { return a-b; }) -&gt; 오름차순
+callbackData.sort(function(a, b) { return b.total - a.total; });
+
+x.domain(callbackData.map(function(d) { return d.State; }));
+y.domain([0, d3.max(callbackData, function(d) { return d.total; })]);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
+    .attr(&quot;font-size&quot;, &quot;11px&quot;)
+    .call(xAxis);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis)
+  .append(&quot;text&quot;)
+    .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
+    .attr(&quot;y&quot;, 6)
+    .attr(&quot;dy&quot;, &quot;.71em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(&quot;Population&quot;);
+
+var state = svg.selectAll(&quot;.state&quot;)
+    .data(callbackData)
+  .enter().append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;g&quot;)
+    .attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + x(d.State) + &quot;,0)&quot;; });
+
+state.selectAll(&quot;rect&quot;)
+    .data(function(d) { return d.ages; })
+  .enter().append(&quot;rect&quot;)
+    .attr(&quot;width&quot;, x.rangeBand())
+    .attr(&quot;y&quot;, function(d) { return y(d.y1); })
+    .attr(&quot;height&quot;, function(d) { return y(d.y0) - y(d.y1); })
+    .style(&quot;fill&quot;, function(d) { return color(d.name); });
+
+var legend = svg.selectAll(&quot;.legend&quot;)
+    .data(color.domain().slice().reverse())
+  .enter().append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;legend&quot;)
+    .attr(&quot;transform&quot;, function(d, i) { return &quot;translate(0,&quot; + i * 20 + &quot;)&quot;; });
+
+legend.append(&quot;rect&quot;)
+    .attr(&quot;x&quot;, width - 18)
+    .attr(&quot;width&quot;, 18)
+    .attr(&quot;height&quot;, 18)
+    .style(&quot;fill&quot;, color);
+
+legend.append(&quot;text&quot;)
+    .attr(&quot;x&quot;, width - 24)
+    .attr(&quot;y&quot;, 9)
+    .attr(&quot;dy&quot;, &quot;.35em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(function(d) { return d; });
+</code></pre>
+
+<p><br />
+<br /></p>
+
+<h2 id="basic-interaction-data-tooltips">Basic Interaction - Data Tooltips</h2>
               
             </div>
           </div>
