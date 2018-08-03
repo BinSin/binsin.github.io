@@ -2321,6 +2321,81 @@ legend.append(&quot;text&quot;)
 <br /></p>
 
 <h2 id="basic-interaction-data-tooltips">Basic Interaction - Data Tooltips</h2>
+
+<h3 id="document-object-model-event-drivers">Document Object Model Event Drivers</h3>
+
+<ul>
+<li>Mouse events</li>
+<li>Touch events</li>
+<li>Keyboard events</li>
+<li>HTML frame/object events</li>
+<li>HTML form events</li>
+<li>User interface events</li>
+</ul>
+
+<h3 id="dom-event-drivers-mouse-events">DOM Event Drivers - Mouse Events</h3>
+
+<ul>
+<li>click</li>
+<li>double click</li>
+<li>mouse down</li>
+<li>mouse up</li>
+<li>mouse over</li>
+<li>mouse move</li>
+<li>mouse out</li>
+</ul>
+
+<h3 id="d3-selection-on">D3.selection.on</h3>
+
+<ul>
+<li>d3.selection.on(type[, listener[, capture]])</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.selectAll(&quot;circle&quot;)
+    .on(&quot;mouseover&quot;, function(d,i) { alert(&quot;mouseover&quot;); })
+    .on(&quot;mouseout&quot;,  function(d,i) { alert(&quot;mouseout&quot;);  });
+</code></pre>
+
+<ul>
+<li>mouseover : 커서가 circle 위에 들어올 때</li>
+<li>mouseout : 커서가 circle 밖에 나갈 때</li>
+</ul>
+
+<h3 id="d3-event">D3.event</h3>
+
+<ul>
+<li>d3.event</li>
+</ul>
+
+<pre><code class="language-JavaScript">d3.event.pageX;
+d3.event.pageY;
+</code></pre>
+
+<p>현재 마우스의 위치 좌표를 알려준다. <br /></p>
+
+<ul>
+<li>Scatterplot 에서 활용</li>
+</ul>
+
+<p>```JavaScript
+// opacity : 투명도 설정
+// dot 안으로 들어가면 div 요소가 추가되어 글이 나온다.
+function mouseover(d) {
+    div.html(&ldquo;Sepal Width: &ldquo; + d.sepalWidth + &ldquo;<br />&rdquo; + &ldquo;Sepal Length: &ldquo; + d.sepalLength)
+    .style(&ldquo;left&rdquo;, (d3.event.pageX + 9) + &ldquo;px&rdquo;)
+    .style(&ldquo;top&rdquo;,  (d3.event.pageY - 43) + &ldquo;px&rdquo;)
+    .style(&ldquo;opacity&rdquo;, 1);
+}</p>
+
+<p>// dot 밖으로 나가면 div 요소가 투명해짐
+function mouseout() {
+    div.style(&ldquo;opacity&rdquo;, 1e-6);
+}</p>
+
+<p>// mouse event 설정
+d3.selectAll(&ldquo;.dot&rdquo;)
+    .on(&ldquo;mouseover&rdquo;, mouseover)
+    .on(&ldquo;mouseout&rdquo;, mouseout);</p>
               
             </div>
           </div>
