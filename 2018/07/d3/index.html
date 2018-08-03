@@ -1938,6 +1938,175 @@ legend.append(&quot;text&quot;)
     .style(&quot;text-anchor&quot;, &quot;end&quot;)
     .text(function(d) { return d; });
 </code></pre>
+
+<h3 id="bar-chart">Bar Chart</h3>
+
+<ul>
+<li><a href="https://bl.ocks.org/mbostock/3885304">Bar Chart</a></li>
+</ul>
+
+<pre><code class="language-JavaScript">var callbackError;
+var callbackData;
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var color = d3.scale.category10();
+
+// 축의 구성 요소에 대한 포메터를 정의
+var formatPercent = d3.format(&quot;.0%&quot;);
+formatPercent(0.12); // 12%
+
+// 0~width 까지를 .1 차이를 둬서
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(&quot;bottom&quot;);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient(&quot;left&quot;)
+    .tickFormat(formatPercent);
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+d3.tsv(&quot;data.tsv&quot;, function(error,data) {
+    callbackError = error;
+    callbackData  = data;
+});
+
+callbackData.forEach(function(d) {
+    d.frequency = +d.frequency;
+});
+
+// 도메인을 알파벳으로 한다.
+x.domain(callbackData.map(function(d) { return d.letter; }));
+y.domain([0, d3.max(callbackData, function(d) { return d.frequency; })]);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;,&quot;translate(0, &quot; + height + &quot;)&quot;)
+    .call(xAxis);
+
+// style(&quot;text-anchor&quot;, &quot;end&quot;) 를 해야 끝에 맞게 글이 추가된다
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis)
+  .append(&quot;text&quot;)
+    .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
+    .attr(&quot;y&quot;, 6)
+    .attr(&quot;dy&quot;, &quot;.71em&quot;)
+    .style(&quot;text-anchor&quot;, &quot;end&quot;)
+    .text(&quot;Frequency&quot;);
+
+// 커버를 rect 에 갖다 대면 color 에서 2단계 더 어두운 색으로 바뀐다.
+svg.selectAll(&quot;.bar&quot;)
+    .data(callbackData)
+  .enter().append(&quot;rect&quot;)
+    .attr(&quot;class&quot;, &quot;bar&quot;)
+    .attr(&quot;x&quot;, function(d) { return x(d.letter); })
+    .attr(&quot;width&quot;, x.rangeBand())
+    .attr(&quot;y&quot;, function(d) { return y(d.frequency); })
+    .attr(&quot;height&quot;, function(d) { return height - y(d.frequency); })
+    .on(&quot;mouseover&quot;, function(d) {
+          d3.select(this).style(&quot;fill&quot;, d3.rgb(color(d.rate)).darker(2));
+      })
+      .on(&quot;mouseout&quot;, function(d) {
+          d3.select(this).style(&quot;fill&quot;, color(d.rate));
+      });
+
+// class=&quot;bar&quot; 인 요소들을 steelblue 색으로 바꿈
+svg.selectAll(&quot;.bar&quot;).attr(&quot;fill&quot;,&quot;steelblue&quot;);
+</code></pre>
+
+<h3 id="bar-chart-with-negative-values">Bar chart With Negative Values</h3>
+
+<pre><code class="language-JavaScript">var data = [-15, -20, -22, -18, 2, 6, -26, -18];
+
+var margin = {top: 30, right: 10, bottom: 10, left: 10},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x0 = Math.max(-d3.min(data), d3.max(data));
+
+var x = d3.scale.linear()
+    .domain([-x0, x0])
+    .range([0, width])
+    .nice();
+
+// rangeRoundBands : 높이가 80% 만 표시된다.
+// rangeRoundBands([0,height], .7) : 30%만 표시
+var y = d3.scale.ordinal()
+    .domain(d3.range(data.length))
+    .rangeRoundBands([0, height], .2);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(&quot;top&quot;);
+
+var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+// d&lt;0 이면 'bar negative' 로 d&gt;=0 dlaus 'bar positive'로
+svg.selectAll(&quot;.bar&quot;)
+    .data(data)
+  .enter().append(&quot;rect&quot;)
+    .attr(&quot;class&quot;, function(d) { return d &lt; 0 ? &quot;bar negative&quot; : &quot;bar positive&quot;; })
+    .attr(&quot;x&quot;, function(d) { return x(Math.min(0, d)); })
+    .attr(&quot;y&quot;, function(d, i) { return y(i); })
+    .attr(&quot;width&quot;, function(d) { return Math.abs(x(d) - x(0)); })
+    .attr(&quot;height&quot;, y.rangeBand());
+
+d3.selectAll(&quot;.bar.negative&quot;).attr(&quot;fill&quot;,&quot;brown&quot;);
+d3.selectAll(&quot;.bar.positive&quot;).attr(&quot;fill&quot;,&quot;steelblue&quot;);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .call(xAxis);
+
+svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+  .append(&quot;line&quot;)
+    .attr(&quot;x1&quot;, x(0))
+    .attr(&quot;x2&quot;, x(0))
+    .attr(&quot;y1&quot;, 0)
+    .attr(&quot;y2&quot;, height)
+    .style(&quot;fill&quot;,&quot;none&quot;)
+    .style(&quot;stroke&quot;,&quot;#000&quot;)
+    .style(&quot;shape-rendering&quot;, &quot;crispEdges&quot;);
+  ````
+
+### Grouped Bar Chart
+
+```JavaScript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
               
             </div>
           </div>
